@@ -2,7 +2,7 @@
 
 First, install the dependencys:
 
-```bash 
+```bash
 npm install
 # or
 yarn install
@@ -27,4 +27,3 @@ bun dev
 ```
 
 The server will open on `http://localhost:3000`
-
