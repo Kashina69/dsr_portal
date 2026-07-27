@@ -12,11 +12,11 @@
 
 ## Component Index
 
-| Component                 | File                                            | Tags                               | Description                                                                                         |
-| ------------------------- | ----------------------------------------------- | ---------------------------------- | --------------------------------------------------------------------------------------------------- |
-| LoginForm                 | `src/app/login/components/LoginForm.tsx`               | login, auth, form, email, password     | Login form with Radix UI primitives, Zod validation, password strength (page-specific, login route)          |
-| PasswordStrengthIndicator | `src/app/login/components/PasswordStrength.tsx`        | password, strength, meter, rating      | Displays password strength rating: too easy / diff / strong (page-specific, login route)                     |
-| ForgotPasswordForm        | `src/app/forgot-password/components/ForgotPasswordForm.tsx` | forgot-password, reset, auth, email | Forgot password form with Radix UI, Zod email validation (page-specific, forgot-password route) |
+| Component                 | File                                                        | Tags                                | Description                                                                                         |
+| ------------------------- | ----------------------------------------------------------- | ----------------------------------- | --------------------------------------------------------------------------------------------------- |
+| LoginForm                 | `src/app/login/components/LoginForm.tsx`                    | login, auth, form, email, password  | Login form with Radix UI primitives, Zod validation, password strength (page-specific, login route) |
+| PasswordStrengthIndicator | `src/app/login/components/PasswordStrength.tsx`             | password, strength, meter, rating   | Displays password strength rating: too easy / diff / strong (page-specific, login route)            |
+| ForgotPasswordForm        | `src/app/forgot-password/components/ForgotPasswordForm.tsx` | forgot-password, reset, auth, email | Forgot password form with Radix UI, Zod email validation (page-specific, forgot-password route)     |
 
 ## Rules
 
