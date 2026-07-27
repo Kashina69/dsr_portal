@@ -13,7 +13,8 @@
 
 | Component | File | Tags | Description |
 |-----------|------|------|-------------|
-| (empty — add as created) | | | |
+| LoginForm | `src/app/login/components/LoginForm.tsx` | login, auth, form, email, password | Login form with Radix UI primitives, Zod validation, password strength (page-specific, login route) |
+| PasswordStrengthIndicator | `src/app/login/components/PasswordStrength.tsx` | password, strength, meter, rating | Displays password strength rating: too easy / diff / strong (page-specific, login route) |
 
 ## Rules
 - If a component is used in 2+ routes → place here
