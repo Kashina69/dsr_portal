@@ -10,12 +10,22 @@
 - **Tailwind CSS v4** — `@import "tailwindcss"`, PostCSS `@tailwindcss/postcss`
 - **TypeScript** strict mode, `@/*` → `./src/*`
 - **pnpm** workspace
-- **ESLint v9** flat config (core-web-vitals + typescript)
+- **ESLint v9** flat config (core-web-vitals + typescript + import sorting + prettier)
+- **Prettier v3** (`.prettierrc.yaml`)
 - **React Compiler** enabled in `next.config.ts`
 
 ## 2. Commands
 
-`pnpm dev` | `pnpm build` | `pnpm lint`
+| Command             | Action                                                                    |
+| ------------------- | ------------------------------------------------------------------------- |
+| `pnpm dev`          | Dev server                                                                |
+| `pnpm build`        | Production build                                                          |
+| `pnpm lint`         | ESLint check                                                              |
+| `pnpm lint:fix`     | ESLint auto-fix                                                           |
+| `pnpm format`       | Prettier format all                                                       |
+| `pnpm format:check` | Prettier check only                                                       |
+| `pnpm typecheck`    | `tsc --noEmit`                                                            |
+| `pnpm check`        | Full CI pipeline: clean `.next` + typecheck + lint + format check + build |
 
 No test framework.
 
@@ -51,28 +61,31 @@ src/
 ## 4. Code Conventions
 
 ### 4.1 File Length
+
 - **Max 200 lines** for simple components/hooks
 - **Max 500 lines** for complex global components
 - If exceeded → split into sub-components, extract hooks/services
 
 ### 4.2 Component Hierarchy (when to place where)
 
-| Used in | Size | Place in |
-|---------|------|----------|
-| 1 route only | any | `app/<route>/components/` |
-| 2+ routes | small (<200 lines) | `components/ui/` |
-| 2+ routes | large (200-500 lines) | `components/global/` |
-| 2+ routes | any | `components/global/` if layout-level (Header, Sidebar) |
+| Used in      | Size                  | Place in                                               |
+| ------------ | --------------------- | ------------------------------------------------------ |
+| 1 route only | any                   | `app/<route>/components/`                              |
+| 2+ routes    | small (<200 lines)    | `components/ui/`                                       |
+| 2+ routes    | large (200-500 lines) | `components/global/`                                   |
+| 2+ routes    | any                   | `components/global/` if layout-level (Header, Sidebar) |
 
 ### 4.3 Naming
-| Type | Pattern | Example |
-|------|---------|---------|
-| Component file | `PascalCase.tsx` | `Button.tsx` |
-| Hook file | `camelCase.hook.ts` | `useAuth.hook.ts` |
-| Service file | `camelCase.service.ts` | `api.service.ts` |
-| Route page | `page.tsx` | `page.tsx` |
+
+| Type           | Pattern                | Example           |
+| -------------- | ---------------------- | ----------------- |
+| Component file | `PascalCase.tsx`       | `Button.tsx`      |
+| Hook file      | `camelCase.hook.ts`    | `useAuth.hook.ts` |
+| Service file   | `camelCase.service.ts` | `api.service.ts`  |
+| Route page     | `page.tsx`             | `page.tsx`        |
 
 ### 4.4 Splitting Rules
+
 - If a component CAN be reused elsewhere → make it global/ui immediately
 - If a file approaches 200 lines → extract sub-components, hooks, or services
 - Extract side effects and API calls into `.hook.ts` or `.service.ts` files
@@ -94,14 +107,14 @@ These are **token-efficient reference nodes**. Always use this workflow:
 
 ### Doc Index
 
-| Doc | Path | What it tracks |
-|-----|------|---------------|
-| UI Components | `src/components/ui/ui.components.md` | small reusable components |
-| Global Components | `src/components/global/global.components.md` | large cross-session components |
-| Hooks | `src/hooks/hooks.md` | global hooks |
-| Services | `src/services/services.md` | global services |
-| Project Memory | `src/context/memory.md` | business logic, decisions, taste |
-| This file | `AGENTS.md` | entry point, conventions, workflow |
+| Doc               | Path                                         | What it tracks                     |
+| ----------------- | -------------------------------------------- | ---------------------------------- |
+| UI Components     | `src/components/ui/ui.components.md`         | small reusable components          |
+| Global Components | `src/components/global/global.components.md` | large cross-session components     |
+| Hooks             | `src/hooks/hooks.md`                         | global hooks                       |
+| Services          | `src/services/services.md`                   | global services                    |
+| Project Memory    | `src/context/memory.md`                      | business logic, decisions, taste   |
+| This file         | `AGENTS.md`                                  | entry point, conventions, workflow |
 
 Each doc has an index table with: **Name, File, Tags (keywords), Description**.
 Tags include alternative names so agents find components even with different search terms.
@@ -111,20 +124,23 @@ Tags include alternative names so agents find components even with different sea
 ## 6. Agent Workflow
 
 ### When given a task:
+
 1. **Read this file** (done — you're here)
 2. **Grep `memory.md`** for relevant context (business logic, prior decisions)
 3. **Grep the relevant component/hook/service .md** for existing matching items
 4. **Only read full files** when grep confirms relevance
 5. **Implement** following conventions above
 6. **Update docs** — add new components/hooks/services to index tables, update memory.md with decisions
-7. **Run `pnpm lint`** before finishing
+7. **Run `pnpm lint`** before finishing (or `pnpm check` for full CI pipeline)
 
 ### When adding a new component:
+
 - Check if something similar exists in `ui.components.md` or `global.components.md` (grep)
 - Add tags/keywords and alternative names so future agents find it
 - Add entry to the appropriate index table
 
 ### When making a decision:
+
 - Log it in `memory.md` under Architecture Decisions or Taste/Preferences
 
 ---
@@ -132,6 +148,7 @@ Tags include alternative names so agents find components even with different sea
 ## 7. Self-Improving System
 
 This is a **living context graph**. Every agent session should:
+
 1. **Read** AGENTS.md (entry node)
 2. **Traverse** only relevant doc nodes (grep, don't read all)
 3. **Update** docs with new entries, tags, decisions
