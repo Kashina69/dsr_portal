@@ -44,7 +44,9 @@ src/
 │       ├── components/         # page-specific components
 │       │   └── <Component>.tsx
 │       ├── <hook>.hook.ts      # page-specific hooks
-│       └── <page>.service.ts   # page-specific services/api
+│       ├── <page>.service.ts   # page-specific services/api
+│       ├── <route>.types.ts    # route-local types (interfaces, unions, enums)
+│       └── <route>.data.ts     # route-local dummy/mock data
 ├── components/
 │   ├── ui/                     # small reusable components (Button, Input, Modal…)
 │   │   └── ui.components.md    # index — grep before read
@@ -54,6 +56,10 @@ src/
 │   └── hooks.md
 ├── services/                   # global services (used 2+ routes)
 │   └── services.md
+├── types/                      # shared types used by 2+ modules (feature.types.ts)
+│   └── <feature>.type.ts
+├── data/                       # shared dummy data used by 2+ modules (feature.data.ts)
+│   └── <feature>.data.ts
 └── context/
     └── memory.md               # project memory — business logic, decisions, taste
 ```
@@ -79,14 +85,25 @@ src/
 
 ### 4.3 Naming
 
-| Type           | Pattern                | Example           |
-| -------------- | ---------------------- | ----------------- |
-| Component file | `PascalCase.tsx`       | `Button.tsx`      |
-| Hook file      | `camelCase.hook.ts`    | `useAuth.hook.ts` |
-| Service file   | `camelCase.service.ts` | `api.service.ts`  |
-| Route page     | `page.tsx`             | `page.tsx`        |
+| Type           | Pattern                | Example              |
+| -------------- | ---------------------- | -------------------- |
+| Component file | `PascalCase.tsx`       | `Button.tsx`         |
+| Hook file      | `camelCase.hook.ts`    | `useAuth.hook.ts`    |
+| Service file   | `camelCase.service.ts` | `api.service.ts`     |
+| Route types    | `<route>.types.ts`     | `dashboard.types.ts` |
+| Route data     | `<route>.data.ts`      | `dashboard.data.ts`  |
+| Global types   | `<feature>.type.ts`    | `auth.type.ts`       |
+| Global data    | `<feature>.data.ts`    | `users.data.ts`      |
+| Route page     | `page.tsx`             | `page.tsx`           |
 
-### 4.4 Splitting Rules
+### 4.4 Types & Data Separation
+
+- **No type/interface/enum definitions in component code** — import from a `.types.ts` file.
+- **Local (module-level):** `src/app/<route>/<route>.types.ts` + `<route>.data.ts` — consumed only within that route.
+- **Global (shared):** `src/types/<feature>.type.ts` + `src/data/<feature>.data.ts` — used by 2+ routes/modules.
+- **When building a new module, ALWAYS create the `.types.ts` and `.data.ts` files as part of the scaffold.** Do not inline types. Do not mix types and data in one file.
+
+### 4.5 Splitting Rules
 
 - If a component CAN be reused elsewhere → make it global/ui immediately
 - If a file approaches 200 lines → extract sub-components, hooks, or services
@@ -115,6 +132,8 @@ These are **token-efficient reference nodes**. Always use this workflow:
 | Global Components | `src/components/global/global.components.md` | large cross-session components     |
 | Hooks             | `src/hooks/hooks.md`                         | global hooks                       |
 | Services          | `src/services/services.md`                   | global services                    |
+| Types             | `src/types/<feature>.type.ts`                | shared TypeScript types            |
+| Data              | `src/data/<feature>.data.ts`                 | dummy/mock data                    |
 | Project Memory    | `src/context/memory.md`                      | business logic, decisions, taste   |
 | This file         | `AGENTS.md`                                  | entry point, conventions, workflow |
 
