@@ -14,9 +14,13 @@
 
 | Component                 | File                                                        | Tags                                | Description                                                                                         |
 | ------------------------- | ----------------------------------------------------------- | ----------------------------------- | --------------------------------------------------------------------------------------------------- |
-| LoginForm                 | `src/app/login/components/LoginForm.tsx`                    | login, auth, form, email, password  | Login form with Radix UI primitives, Zod validation, password strength (page-specific, login route) |
-| PasswordStrengthIndicator | `src/app/login/components/PasswordStrength.tsx`             | password, strength, meter, rating   | Displays password strength rating: too easy / diff / strong (page-specific, login route)            |
-| ForgotPasswordForm        | `src/app/forgot-password/components/ForgotPasswordForm.tsx` | forgot-password, reset, auth, email | Forgot password form with Radix UI, Zod email validation (page-specific, forgot-password route)     |
+| LoginForm                 | `src/app/login/components/LoginForm.tsx`                    | login, auth, form, email, password  | Login form with shadcn Card/Input/Label/Button, Zod validation, password strength (page-specific)   |
+| PasswordStrengthIndicator | `src/app/login/components/PasswordStrength.tsx`             | password, strength, meter, rating   | Colored progress bar displaying password strength: too easy / fair / strong (page-specific)          |
+| ForgotPasswordForm        | `src/app/forgot-password/components/ForgotPasswordForm.tsx` | forgot-password, reset, auth, email | Forgot password form with shadcn Card/Input/Label/Button, Zod validation (page-specific)            |
+| Button                    | `src/components/ui/button.tsx`                              | button, action, cva, variants       | shadcn Button with variant/size props via class-variance-authority (default/outline/ghost/etc.)     |
+| Input                     | `src/components/ui/input.tsx`                               | input, text, field, form            | Styled input field with focus ring, disabled state, invalid state                                   |
+| Label                     | `src/components/ui/label.tsx`                               | label, form, input-label            | Accessible form label with peer-disabled support                                                    |
+| Card                      | `src/components/ui/card.tsx`                                | card, container, section, layout    | Container with CardHeader/CardTitle/CardDescription/CardContent/CardFooter sub-components          |
 
 ## Rules
 

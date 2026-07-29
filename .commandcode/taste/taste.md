@@ -1,0 +1,7 @@
+- Prefers using shadcn/ui as the component library for building application UIs. Confidence: 0.9
+- Prefers an incremental workflow: improve existing pages first before discussing or expanding to new features. Confidence: 0.8
+- Prefers technical explanations in short bullet points with clear cause → effect structure (issue → fix → files changed), to quickly understand changes in the project. Confidence: 0.8
+- Prefers deep educational explanations of tooling and configuration — wants to understand what each config file does, what each dependency is for, how CSS imports work, and how components are architected, not just how to run commands. Confidence: 0.9
+- Prefers keeping dependencies clean: proactively removes unused packages rather than leaving dead dependencies in the project. Confidence: 0.7
+- Prefers keeping AI/project documentation (AGENTS.md, memory.md, component docs) updated as the project evolves — surgical updates to only the stale parts, not full rewrites, and excluding README. Confidence: 0.8
+- Cares about designing project structure and documentation to be AI-friendly — wants AGENTS.md as a single entry point, indexed tables with tags, explicit conventions (naming, file limits), and a search-first workflow so AI agents can navigate efficiently. Confidence: 0.7

@@ -8,11 +8,13 @@
 
 - **Next.js 16** — App Router, `src/` directory
 - **Tailwind CSS v4** — `@import "tailwindcss"`, PostCSS `@tailwindcss/postcss`
+- **shadcn/ui v4** — `@base-ui/react` primitives, `class-variance-authority`, `lucide-react` icons
 - **TypeScript** strict mode, `@/*` → `./src/*`
 - **pnpm** workspace
 - **ESLint v9** flat config (core-web-vitals + typescript + import sorting + prettier)
 - **Prettier v3** (`.prettierrc.yaml`)
 - **React Compiler** enabled in `next.config.ts`
+- **Zod** for validation (v4)
 
 ## 2. Commands
 

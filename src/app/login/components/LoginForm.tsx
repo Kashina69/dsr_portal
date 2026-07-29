@@ -1,7 +1,19 @@
 "use client";
 
-import * as Form from "@radix-ui/react-form";
+import Link from "next/link";
 import { useState } from "react";
+
+import { Button } from "@/components/ui/button";
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 import { getPasswordStrength, loginSchema } from "../login.validation";
 import { PasswordStrengthIndicator } from "./PasswordStrength";
@@ -28,39 +40,62 @@ export function LoginForm() {
     }
 
     return (
-        <Form.Root onSubmit={handleSubmit}>
-            <div>LOGO</div>
-
-            <h1>Login to your account</h1>
-            <p>Enter your email address and password to access the panel.</p>
-
-            <Form.Field name="email">
-                <Form.Label>Email</Form.Label>
-                <Form.Control asChild>
-                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                </Form.Control>
-                {errors.email && <Form.Message>{errors.email}</Form.Message>}
-            </Form.Field>
-
-            <Form.Field name="password">
-                <Form.Label>Password</Form.Label>
-                <Form.Control asChild>
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </Form.Control>
-                {errors.password && <Form.Message>{errors.password}</Form.Message>}
-            </Form.Field>
-
-            <PasswordStrengthIndicator strength={strength} />
-
-            <a href="#">Forgot password?</a>
-
-            <Form.Submit asChild>
-                <button type="submit">Login</button>
-            </Form.Submit>
-        </Form.Root>
+        <div className="flex min-h-screen items-center justify-center px-4">
+            <Card className="w-full max-w-md">
+                <CardHeader className="text-center">
+                    <div className="mx-auto mb-2 flex size-12 items-center justify-center rounded-full bg-primary text-xl font-bold text-primary-foreground">
+                        D
+                    </div>
+                    <CardTitle className="text-2xl">Login to your account</CardTitle>
+                    <CardDescription>
+                        Enter your email address and password to access the panel.
+                    </CardDescription>
+                </CardHeader>
+                <form onSubmit={handleSubmit}>
+                    <CardContent className="space-y-4">
+                        <div className="space-y-2">
+                            <Label htmlFor="email">Email</Label>
+                            <Input
+                                id="email"
+                                type="email"
+                                placeholder="you@example.com"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                aria-invalid={!!errors.email}
+                            />
+                            {errors.email && (
+                                <p className="text-sm text-destructive">{errors.email}</p>
+                            )}
+                        </div>
+                        <div className="space-y-2">
+                            <Label htmlFor="password">Password</Label>
+                            <Input
+                                id="password"
+                                type="password"
+                                placeholder="Enter your password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                aria-invalid={!!errors.password}
+                            />
+                            {errors.password && (
+                                <p className="text-sm text-destructive">{errors.password}</p>
+                            )}
+                        </div>
+                        <PasswordStrengthIndicator strength={strength} />
+                    </CardContent>
+                    <CardFooter className="flex-col gap-3">
+                        <Button type="submit" className="w-full">
+                            Login
+                        </Button>
+                        <Link
+                            href="/forgot-password"
+                            className="text-sm text-primary underline-offset-4 hover:underline"
+                        >
+                            Forgot password?
+                        </Link>
+                    </CardFooter>
+                </form>
+            </Card>
+        </div>
     );
 }
