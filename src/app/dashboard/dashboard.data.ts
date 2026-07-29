@@ -366,3 +366,51 @@ export const stats = {
     onLeave: employees.filter((e) => e.status === "On Leave").length,
     pendingRequests: leaveRequests.filter((r) => r.status === "Pending").length,
 };
+
+export const navItems = [
+    { label: "Dashboard", href: "/dashboard", active: true },
+    { label: "Employees", href: "#" },
+    { label: "Attendance", href: "#" },
+    { label: "Leave Management", href: "#" },
+    { label: "Daily Reports", href: "#" },
+    { label: "Settings", href: "#" },
+];
+
+export const deptColors: Record<string, string> = {
+    Engineering: "bg-primary",
+    Design: "bg-emerald-500",
+    HR: "bg-amber-500",
+    Marketing: "bg-rose-500",
+    Finance: "bg-violet-500",
+};
+
+export const statItems = [
+    {
+        label: "Total Employees",
+        value: stats.total,
+        sub: "+2 this month",
+        color: "bg-indigo-500/10 text-indigo-600",
+        delay: "delay-0",
+    },
+    {
+        label: "Present Today",
+        value: stats.present,
+        sub: `${Math.round((stats.present / stats.total) * 100)}% attendance`,
+        color: "bg-emerald-500/10 text-emerald-600",
+        delay: "delay-75",
+    },
+    {
+        label: "On Leave",
+        value: stats.onLeave,
+        sub: `${stats.pendingRequests} pending requests`,
+        color: "bg-amber-500/10 text-amber-600",
+        delay: "delay-150",
+    },
+    {
+        label: "Absent",
+        value: stats.absent,
+        sub: "No prior notice",
+        color: "bg-rose-500/10 text-rose-600",
+        delay: "delay-225",
+    },
+];
