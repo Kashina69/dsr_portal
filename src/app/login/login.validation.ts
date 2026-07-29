@@ -1,13 +1,13 @@
 import { z } from "zod";
 
+import type { PasswordStrength } from "./login.types";
+
 export const loginSchema = z.object({
     email: z.string().email("Enter a valid email address"),
     password: z.string().min(6, "Password must be at least 6 characters"),
 });
 
 export type LoginFormData = z.infer<typeof loginSchema>;
-
-export type PasswordStrength = "too easy" | "diff" | "strong" | null;
 
 export function getPasswordStrength(password: string): PasswordStrength {
     if (!password) return null;

@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-import type { PasswordStrength } from "../login.validation";
+import type { PasswordStrength } from "../login.types";
 
 const strengthConfig: Record<
     NonNullable<PasswordStrength>,
