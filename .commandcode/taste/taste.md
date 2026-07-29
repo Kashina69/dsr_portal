@@ -1,4 +1,10 @@
 - Prefers using shadcn/ui as the component library for building application UIs. Confidence: 0.9
+- Prefers keeping shadcn/ui component files (`src/components/ui/*.tsx`) pristine/stock — never manually edit them. Any customization should go in page-specific components or wrapper components, not in the shadcn-generated files. Confidence: 0.8
+- Prefers modern minimalist dashboard UIs with compact data density — power-user layouts that show more data in less space, not airy/spacious designs. Confidence: 0.9
+- Prefers indigo-tinted color schemes (slate-gray chrome + indigo accent) over generic blue-purple or neutral-gray SaaS palettes. Confidence: 0.9
+- Prefers product-grade motion: fast, functional animations (fade-up, slide-right, scale-in at 150-300ms) applied to stat reveals, table rows, and chart bars — no page-load theater or decorative animations. Confidence: 0.9
+- When given an image reference for a UI, builds a redesigned modern version that improves the layout, UX, and visual design — does not produce a direct copy. Confidence: 0.9
+- Uses the design skill to guide UI decisions whenever building visual interfaces. Confidence: 0.8
 - Prefers an incremental workflow: improve existing pages first before discussing or expanding to new features. Confidence: 0.8
 - Prefers technical explanations in short bullet points with clear cause → effect structure (issue → fix → files changed), to quickly understand changes in the project. Confidence: 0.8
 - Prefers deep educational explanations of tooling and configuration — wants to understand what each config file does, what each dependency is for, how CSS imports work, and how components are architected, not just how to run commands. Confidence: 0.9
@@ -7,3 +13,5 @@
 - Cares about designing project structure and documentation to be AI-friendly — wants AGENTS.md as a single entry point, indexed tables with tags, explicit conventions (naming, file limits), and a search-first workflow so AI agents can navigate efficiently. Confidence: 0.7
 - Prefers structured commit messages formatted with a type tag (`refactor:`, `fix:`, etc.) followed by a summary line, then bullet points of specific changes — and expects the agent to verify via `git diff` before composing the message. Confidence: 0.8
 - Never auto-commit — only commit when explicitly told to do so. Confidence: 0.9
+- Prefers precise commit scope discipline: inspect staged vs unstaged changes before committing, commit only the staged subset, and clearly communicate what was committed vs what remains behind. Confidence: 0.8
+- Always runs `pnpm format` (Prettier) before committing to ensure all files are correctly formatted — not just linting/typechecking. Confidence: 0.9
