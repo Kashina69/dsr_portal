@@ -5,3 +5,5 @@
 - Prefers keeping dependencies clean: proactively removes unused packages rather than leaving dead dependencies in the project. Confidence: 0.7
 - Prefers keeping AI/project documentation (AGENTS.md, memory.md, component docs) updated as the project evolves — surgical updates to only the stale parts, not full rewrites, and excluding README. Confidence: 0.8
 - Cares about designing project structure and documentation to be AI-friendly — wants AGENTS.md as a single entry point, indexed tables with tags, explicit conventions (naming, file limits), and a search-first workflow so AI agents can navigate efficiently. Confidence: 0.7
+- Prefers structured commit messages formatted with a type tag (`refactor:`, `fix:`, etc.) followed by a summary line, then bullet points of specific changes — and expects the agent to verify via `git diff` before composing the message. Confidence: 0.8
+- Never auto-commit — only commit when explicitly told to do so. Confidence: 0.9
