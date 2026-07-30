@@ -1,3 +1,32 @@
+## 1. Quick Index
+
+| Section       | Reference           |
+| ------------- | ------------------- |
+| Global        | [Details](#L9-L27)  |
+| Project level | [Details](#L28-L36) |
+| Good to have  | [Details](#L37-L43) |
+
+# Global
+
+- Prefers a two-tier separation of concerns for types and data: module-local types/data live in `src/app/<route>/<route>.types.ts` and `src/app/<route>/<route>.data.ts` (when consumed only within that route), while truly cross-module shared types/data go in `src/types/<feature>.type.ts` and `src/data/<feature>.data.ts` (when used by 2+ routes). Types/data are never combined in a single file, and type/interface/enum definitions are never placed inside component code — always imported from a dedicated `.types.ts` file. Confidence: 0.9
+- When scaffolding a new module/route, automatically creates the `<route>.types.ts` and `<route>.data.ts` files as part of the initial setup — no need to be reminded. This is part of the AI-first philosophy where conventions are proactively followed, not retroactively enforced. Confidence: 0.8
+- When committing taste-only changes (updates to taste.md or category taste files), uses the format `taste update: <short summary>` as the subject line, followed by bullet points listing each new preference added. Regular code changes still use the standard type-tag format (`refactor:`, `fix:`, etc.). Confidence: 0.8
+- Always runs `pnpm format` (Prettier) before committing to ensure all files are correctly formatted — not just linting/typechecking. Confidence: 0.9
+- Skips the pre-commit pipeline ( pnpm test, build/lint commands) when the commit contains only markdown/doc files (.md) — commits directly without validation for markdown-only changes but run format to format the files. Confidence: 0.8
+- Prefers precise commit scope discipline: inspect staged vs unstaged changes before committing, commit only the staged subset, and clearly communicate what was committed vs what remains behind. Confidence: 0.8
+- Never auto-commit — only commit when explicitly told to do so. Confidence: 0.9
+- Prefers structured commit messages formatted with a type tag (`refactor:`, `fix:`, etc.) followed by a summary line, then bullet points of specific changes — and expects the agent to verify via `git diff` before composing the message. Confidence: 0.8
+- Prefers importing all types from a module in a single import statement (e.g., `import type { TypeA, TypeB, TypeC } from "./path"`) rather than multiple separate type import lines. Confidence: 0.8
+- Uses the design skill to guide UI decisions whenever building visual interfaces. Confidence: 0.8
+- Prefers an incremental workflow: improve existing pages first before discussing or expanding to new features. Confidence: 0.8
+- Prefers technical explanations in short bullet points with clear cause → effect structure (issue → fix → files changed), to quickly understand changes in the project. Confidence: 0.8
+- Prefers keeping AI/project documentation (AGENTS.md, memory.md, component docs) updated as the project evolves — surgical updates to only the stale parts, not full rewrites, and excluding README. Confidence: 0.8
+- Cares about designing project structure and documentation to be AI-friendly
+  — wants AGENTS.md as a single entry point, indexed tables with tags, explicit conventions (naming, file limits), and a search-first workflow so AI agents can navigate efficiently. Confidence: 0.9
+- Enforces max line limits per file and per function — splits code aggressively into smaller files, sub-components, hooks, and services to make the codebase easy for both humans and AI agents to understand, navigate, and debug following the best best practices mentioned above and followed in the project and follow projects folder structure. Confidence: 0.9
+
+# Project level
+
 - Prefers using shadcn/ui as the component library for building application UIs. Confidence: 0.9
 - Prefers keeping shadcn/ui component files (`src/components/ui/*.tsx`) pristine/stock — never manually edit them. Any customization should go in page-specific components or wrapper components, not in the shadcn-generated files. Confidence: 0.8
 - Prefers modern minimalist dashboard UIs with compact data density — power-user layouts that show more data in less space, not airy/spacious designs. Confidence: 0.9
@@ -8,19 +37,10 @@
 - Uses the design skill to guide UI decisions whenever building visual interfaces. Confidence: 0.8
 - Prefers an incremental workflow: improve existing pages first before discussing or expanding to new features. Confidence: 0.8
 - Prefers technical explanations in short bullet points with clear cause → effect structure (issue → fix → files changed), to quickly understand changes in the project. Confidence: 0.8
+
+# Good to have
+
+- The development environment is Windows, but Git Bash must be used for all terminal commands and git operations — never cmd.exe or PowerShell. Git Bash supports heredocs, special characters, and Unix-style commands reliably. Confidence: 0.9
+- Prefers keeping commits organized by file category into separate, sequential commits — taste file changes in one commit, project documentation (.md) files in another, and code/project source files in a third. Never mixes categories in a single commit. Confidence: 0.8
 - Prefers deep educational explanations of tooling and configuration — wants to understand what each config file does, what each dependency is for, how CSS imports work, and how components are architected, not just how to run commands. Confidence: 0.9
 - Prefers keeping dependencies clean: proactively removes unused packages rather than leaving dead dependencies in the project. Confidence: 0.7
-- Prefers keeping AI/project documentation (AGENTS.md, memory.md, component docs) updated as the project evolves — surgical updates to only the stale parts, not full rewrites, and excluding README. Confidence: 0.8
-- Cares about designing project structure and documentation to be AI-friendly — wants AGENTS.md as a single entry point, indexed tables with tags, explicit conventions (naming, file limits), and a search-first workflow so AI agents can navigate efficiently. Confidence: 0.7
-- Enforces max line limits per file and per function — splits code aggressively into smaller files, sub-components, hooks, and services to make the codebase easy for both humans and AI agents to understand, navigate, and debug. Confidence: 0.9
-- Prefers importing all types from a module in a single import statement (e.g., `import type { TypeA, TypeB, TypeC } from "./path"`) rather than multiple separate type import lines. Confidence: 0.8
-- Prefers structured commit messages formatted with a type tag (`refactor:`, `fix:`, etc.) followed by a summary line, then bullet points of specific changes — and expects the agent to verify via `git diff` before composing the message. Confidence: 0.8
-- Never auto-commit — only commit when explicitly told to do so. Confidence: 0.9
-- Prefers precise commit scope discipline: inspect staged vs unstaged changes before committing, commit only the staged subset, and clearly communicate what was committed vs what remains behind. Confidence: 0.8
-- Always runs `pnpm format` (Prettier) before committing to ensure all files are correctly formatted — not just linting/typechecking. Confidence: 0.9
-- Skips the pre-commit pipeline (pnpm format, pnpm test, build/lint commands) when the commit contains only markdown/doc files (.md) — commits directly without formatting or validation for markdown-only changes. Confidence: 0.8
-- When committing taste-only changes (updates to taste.md or category taste files), uses the format `taste update: <short summary>` as the subject line, followed by bullet points listing each new preference added. Regular code changes still use the standard type-tag format (`refactor:`, `fix:`, etc.). Confidence: 0.8
-- When scaffolding a new module/route, automatically creates the `<route>.types.ts` and `<route>.data.ts` files as part of the initial setup — no need to be reminded. This is part of the AI-first philosophy where conventions are proactively followed, not retroactively enforced. Confidence: 0.8
-- Prefers a two-tier separation of concerns for types and data: module-local types/data live in `src/app/<route>/<route>.types.ts` and `src/app/<route>/<route>.data.ts` (when consumed only within that route), while truly cross-module shared types/data go in `src/types/<feature>.type.ts` and `src/data/<feature>.data.ts` (when used by 2+ routes). Types/data are never combined in a single file, and type/interface/enum definitions are never placed inside component code — always imported from a dedicated `.types.ts` file. Confidence: 0.9
-- Prefers keeping commits organized by file category into separate, sequential commits — taste file changes in one commit, project documentation (.md) files in another, and code/project source files in a third. Never mixes categories in a single commit. Confidence: 0.8
-- The development environment is Windows, but Git Bash must be used for all terminal commands and git operations — never cmd.exe or PowerShell. Git Bash supports heredocs, special characters, and Unix-style commands reliably. Confidence: 0.9
