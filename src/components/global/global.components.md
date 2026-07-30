@@ -10,11 +10,15 @@
 - Place in `src/components/global/<ComponentName>.tsx`
 - Sub-components go in `src/components/global/<ComponentName>/` folder
 
-## Component Index
+## 1. Quick Index
 
-| Component                | File | Tags | Description |
-| ------------------------ | ---- | ---- | ----------- |
-| (empty — add as created) |      |      |             |
+| Component                | Tags | Details Reference |
+| ------------------------ | ---- | ----------------- |
+| (empty — add as created) |      |                   |
+
+## 2. Deep Dives
+
+_(empty - add as created)_
 
 ## Rules
 

@@ -1,3 +1,11 @@
+## 1. Quick Index
+
+| Section       | Reference           |
+| ------------- | ------------------- |
+| Global        | [Details](#L9-L27)  |
+| Project level | [Details](#L28-L36) |
+| Good to have  | [Details](#L37-L43) |
+
 # Global
 
 - Prefers a two-tier separation of concerns for types and data: module-local types/data live in `src/app/<route>/<route>.types.ts` and `src/app/<route>/<route>.data.ts` (when consumed only within that route), while truly cross-module shared types/data go in `src/types/<feature>.type.ts` and `src/data/<feature>.data.ts` (when used by 2+ routes). Types/data are never combined in a single file, and type/interface/enum definitions are never placed inside component code — always imported from a dedicated `.types.ts` file. Confidence: 0.9

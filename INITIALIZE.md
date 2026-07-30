@@ -1,163 +1,148 @@
 ---
 name: initialize-project
-description: Initializes a new project by scaffolding AGENTS.md and PROJECT.md files with a token-efficient setup to maintain replicable context quality across any new project.
+description: Initializes a new project by scaffolding AGENTS.md, PROJECT.md, and context registry files using the token-efficient 3-Level Context Graph architecture to maintain replicable context quality across any new project.
 ---
 
-When the user asks to initialize a project or scaffold agent docs, you must create two files in the workspace root: `PROJECT.md` and `AGENTS.md`.
-Use the following templates to generate these files.
+When the user asks to initialize a project or scaffold agent docs, you must follow these steps to set up the **3-Level Context Graph**.
 
-### 1. Create `PROJECT.md`
+### 1. Design Philosophy: The 3-Level Context Graph
 
-Create a file named `PROJECT.md` in the workspace root with the following structure. Fill in the specifics based on the project's actual stack, commands, folder structure, and conventions, but keep this exact format and numbering.
+This architecture is designed to be **context-rich but token-efficient**. The AI should never read an entire markdown file to find one piece of information. Instead, it navigates a strict 3-level reference graph:
+
+- **Level 1: The Entry Node (`AGENTS.md`)** — Acts as a pure router. It contains exact line-number pointers to the `Quick Index` sections of all other documentation files.
+- **Level 2: The Quick Index & Deep Dives (Registry Files)** — Every file (like `ui.components.md`, `memory.md`) is split into two sections:
+    1. `## 1. Quick Index`: A table mapping items/sections to local line numbers (e.g., `[Details](#L50-L65)`).
+    2. `## 2. Deep Dives`: Detailed documentation for each item.
+- **Level 3: Source Code Links** — Inside the "Deep Dive" section, there is a direct pointer to the actual source code line numbers (e.g., `[Source Code](../../src/components/Button.tsx#L1-L150)`).
+
+**Self-Improving Workflow:** As you work on the project, you must automatically maintain this index. If you add a component, you MUST add it to the Quick Index, append its Deep Dive, and if line numbers shift, you MUST proactively calculate the new line numbers and update `AGENTS.md` and the Quick Indexes. This ensures the indexing stays 100% accurate and self-improving.
+
+---
+
+### 2. Scaffold `PROJECT.md`
+
+Create a file named `PROJECT.md` in the workspace root. Fill in the specifics based on the project's actual stack, but strictly use the Quick Index pattern.
 
 ```markdown
 # Project Information
+
+## 1. Quick Index
+
+| Section             | Reference                   |
+| ------------------- | --------------------------- |
+| 1. Stack            | [Details](#L[START]-L[END]) |
+| 2. Commands         | [Details](#L[START]-L[END]) |
+| 3. Folder Structure | [Details](#L[START]-L[END]) |
+| 4. Code Conventions | [Details](#L[START]-L[END]) |
 
 ## 1. Stack
 
 - **[Framework]** — [Details]
 - **[Styling]** — [Details]
-- **[Language]** — [Details]
-- **[Package Manager]** — [Details]
-- **[Linter/Formatter]** — [Details]
 
 ## 2. Commands
 
-| Command           | Action           |
-| ----------------- | ---------------- |
-| `[dev command]`   | Dev server       |
-| `[build command]` | Production build |
-| `[lint command]`  | Linter check     |
+| Command         | Action     |
+| --------------- | ---------- |
+| `[dev command]` | Dev server |
 
 ## 3. Folder Structure
 
-` ` `[root]/
+\`\`\`
+[root]/
 ├── src/
-│   ├── components/         
-│   ├── hooks/      
-│   ├── services/   
-│   ├── types/      
-│   └── context/` ` `
+│ ├── components/  
+│ └── context/
+\`\`\`
 
 ## 4. Code Conventions
 
-### 4.1 File Length
-
 - **Max 200 lines** for simple files
 - **Max 500 lines** for complex files
-
-### 4.2 Naming
-
-| Type           | Pattern             | Example           |
-| -------------- | ------------------- | ----------------- |
-| Component file | `PascalCase.tsx`    | `Button.tsx`      |
-| Hook file      | `camelCase.hook.ts` | `useAuth.hook.ts` |
-
-### 4.3 Splitting Rules
-
-- If a file approaches 200 lines → extract sub-components or services
 ```
 
-_(Note: The above PROJECT.md is a template. You should flesh out the actual content based on the project you are initializing, but ENSURE it contains sections 1 to 4 with the same headings so the line ranges can be determined)._
+_(Calculate the exact line ranges for the Details links after generating the file)._
 
-### 2. Create `AGENTS.md`
+---
 
-After creating `PROJECT.md`, check the exact line numbers for the 4 sections in `PROJECT.md`. Then create `AGENTS.md` in the workspace root using the following exact template, replacing the line numbers (`L[START]-L[END]`) with the actual line numbers from the generated `PROJECT.md`.
+### 3. Scaffold Registry Files
+
+Create the core registry files (e.g., `src/components/ui/ui.components.md`, `src/context/memory.md`, etc.) using this exact structure:
+
+```markdown
+# [Domain Name] Registry
+
+> **Usage:** Grep this file for a keyword/tag before reading full entries.
+
+## 1. Quick Index
+
+| Item                     | Tags | Details Reference |
+| ------------------------ | ---- | ----------------- |
+| (empty — add as created) |      |                   |
+
+## 2. Deep Dives
+
+_(empty - add as created)_
+```
+
+---
+
+### 4. Scaffold `AGENTS.md` (The Entry Node)
+
+After all files are created and their Quick Index line numbers are finalized, create `AGENTS.md` in the workspace root:
 
 ```markdown
 # Agent Guide
 
-**This file is the entry point. Context docs below are graph nodes — grep before full read.**
----
-
-## Token-Efficient Context Retrieval
-
-To maintain token efficiency, this project keeps detailed specifications in `PROJECT.md`. **Be surgical in your searches.** DO NOT read `PROJECT.md` in its entirety. Instead, use your file viewing tools to fetch ONLY the exact line ranges below when you need specific context:
-
-- **Stack Details**: [PROJECT.md#L[START]-L[END]](./PROJECT.md#L[START]-L[END])
-- **Commands**: [PROJECT.md#L[START]-L[END]](./PROJECT.md#L[START]-L[END])
-- **Folder Structure**: [PROJECT.md#L[START]-L[END]](./PROJECT.md#L[START]-L[END])
-- **Code Conventions & Best Practices**: [PROJECT.md#L[START]-L[END]](./PROJECT.md#L[START]-L[END])
-  Only retrieve these sections if they are directly relevant to your current task.
-
+**This file is the entry point. Context docs below are graph nodes — follow line pointers before full reads.**
 ---
 
 ## 1. Reference Docs (Context Graph)
 
-These are **token-efficient reference nodes**. Always use this workflow:
-` ` `
+| Doc               | Path                                                                                             | What it tracks                     |
+| ----------------- | ------------------------------------------------------------------------------------------------ | ---------------------------------- |
+| UI Components     | [ui.components.md Quick Index](./src/components/ui/ui.components.md#L[START]-L[END])             | small reusable components          |
+| Global Components | [global.components.md Quick Index](./src/components/global/global.components.md#L[START]-L[END]) | large cross-session components     |
+| Hooks             | [hooks.md Quick Index](./src/hooks/hooks.md#L[START]-L[END])                                     | global hooks                       |
+| Services          | [services.md Quick Index](./src/services/services.md#L[START]-L[END])                            | global services                    |
+| Project Memory    | [memory.md Quick Index](./src/context/memory.md#L[START]-L[END])                                 | business logic, decisions, taste   |
+| This file         | `AGENTS.md`                                                                                      | entry point, conventions, workflow |
 
-1. IDENTIFY keywords for what you need
-2. GREP the relevant .md file for those keywords
-   └─ if match found → read only that entry
-   └─ if no match → check other docs or create new
-3. UPDATE docs when you add something
-   ` ` `
-
-### Doc Index
-
-| Doc                                                                                        | Path                                         | What it tracks                     |
-| ------------------------------------------------------------------------------------------ | -------------------------------------------- | ---------------------------------- |
-| UI Components                                                                              | `src/components/ui/ui.components.md`         | small reusable components          |
-| Global Components                                                                          | `src/components/global/global.components.md` | large cross-session components     |
-| Hooks                                                                                      | `src/hooks/hooks.md`                         | global hooks                       |
-| Services                                                                                   | `src/services/services.md`                   | global services                    |
-| Types                                                                                      | `src/types/<feature>.type.ts`                | shared TypeScript types            |
-| Data                                                                                       | `src/data/<feature>.data.ts`                 | dummy/mock data                    |
-| Project Memory                                                                             | `src/context/memory.md`                      | business logic, decisions, taste   |
-| This file                                                                                  | `AGENTS.md`                                  | entry point, conventions, workflow |
-| Each doc has an index table with: **Name, File, Tags (keywords), Description**.            |
-| Tags include alternative names so agents find components even with different search terms. |
+Each doc has a **Quick Index** linking to a **Deep Dive**. Always read the Quick Index first.
 
 ---
 
 ## 2. Agent Workflow
 
-### When given a task:
-
 1. **Read this file** (done — you're here)
-2. **Grep `memory.md`** for relevant context (business logic, prior decisions)
-3. **Grep the relevant component/hook/service .md** for existing matching items
-4. **Only read full files** when grep confirms relevance
-5. **Implement** following conventions above
-6. **Update docs** — add new components/hooks/services to index tables, update memory.md with decisions
-7. **Run lint** before finishing
-
-### When adding a new component:
-
-- Check if something similar exists in `ui.components.md` or `global.components.md` (grep)
-- Add tags/keywords and alternative names so future agents find it
-- Add entry to the appropriate index table
-
-### When making a decision:
-
-- Log it in `memory.md` under Architecture Decisions or Taste/Preferences
+2. **Follow Level 1 pointers** to the Quick Index of relevant registry files.
+3. **Follow Level 2 pointers** from the Quick Index to the Deep Dive.
+4. **Follow Level 3 pointers** from the Deep Dive to the source code.
+5. **Update docs** — whenever you add a component/hook/service, you MUST append it to the Quick Index and Deep Dives, and re-calculate line numbers if they shift.
 
 ---
 
 ## 3. Self-Improving System
 
-This is a **living context graph**. Every agent session should:
+This is a **living context graph**. Every agent session must:
 
-1. **Read** AGENTS.md (entry node)
-2. **Traverse** only relevant doc nodes (grep, don't read all)
-3. **Update** docs with new entries, tags, decisions
-4. **Log taste** in memory.md — user preferences for style, patterns, approach
-5. **Split** files that grow stale — if a .md becomes long, refactor into sub-docs
-   This creates a flywheel: each session enriches the graph, making future agents faster.
+1. **Traverse** only relevant doc nodes using exact line numbers.
+2. **Auto-correct** line numbers in `AGENTS.md` and Quick Indexes if document edits cause them to shift.
+3. **Split** files that grow stale or too long (max 200-500 lines).
 
 ---
 
 ## 4. Important Reminders
 
 - BE CONCISE. Sacrifice grammar for brevity.
-- No emojis.
-- No comments in code files.
-- Every file max 200-500 lines.
+- No emojis. No comments in code files.
 - Think about reuse BEFORE you write.
-- When in doubt, ask the user.
 ```
 
-### 3. Finalization
+_(Replace `L[START]-L[END]` with the actual line numbers calculated from the newly generated files)._
 
-After both files are created, notify the user that the project has been initialized with the token-efficient AGENTS.md and PROJECT.md templates.
+---
+
+### 5. Finalization
+
+Notify the user that the project has been initialized with the 3-Level Context Graph.

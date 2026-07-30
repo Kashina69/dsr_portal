@@ -3,6 +3,17 @@
 > **Usage:** This is the brain. Update it when you discover patterns,
 > make decisions, or learn something about the project.
 
+## 1. Quick Index
+
+| Section                 | Reference           |
+| ----------------------- | ------------------- |
+| Tech Stack              | [Details](#L17-L28) |
+| Business Logic          | [Details](#L29-L34) |
+| Architecture Decisions  | [Details](#L35-L43) |
+| Naming & Style Patterns | [Details](#L44-L51) |
+| Known Gaps / TODOs      | [Details](#L52-L57) |
+| Taste / Preferences     | [Details](#L58-L62) |
+
 ## Tech Stack
 
 - Next.js 16 (App Router, `src/` dir)

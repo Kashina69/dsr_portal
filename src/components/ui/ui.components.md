@@ -10,33 +10,173 @@
 - Place in `src/components/ui/<ComponentName>.tsx`
 - Keep focused: button, input, modal, badge, etc.
 
-## Component Index
+## 1. Quick Index
 
-| Component                    | File                                                        | Tags                                | Description                                                                                       |
-| ---------------------------- | ----------------------------------------------------------- | ----------------------------------- | ------------------------------------------------------------------------------------------------- |
-| LoginForm                    | `src/app/login/components/LoginForm.tsx`                    | login, auth, form, email, password  | Login form with shadcn Card/Input/Label/Button, Zod validation, password strength (page-specific) |
-| PasswordStrengthIndicator    | `src/app/login/components/PasswordStrength.tsx`             | password, strength, meter, rating   | Colored progress bar displaying password strength: too easy / fair / strong (page-specific)       |
-| ForgotPasswordForm           | `src/app/forgot-password/components/ForgotPasswordForm.tsx` | forgot-password, reset, auth, email | Forgot password form with shadcn Card/Input/Label/Button, Zod validation (page-specific)          |
-| StatCards                    | `src/app/dashboard/components/StatCards.tsx`                | stats, metrics, cards, dashboard    | 4 stat cards (total/present/on-leave/absent) with stagger fade-up animation (page-specific)       |
-| EmployeeTable                | `src/app/dashboard/components/EmployeeTable.tsx`            | table, employee, filter, search     | Shadcn Table with search/filter, status badges, and animated rows (page-specific)                 |
-| AttendanceChart              | `src/app/dashboard/components/AttendanceChart.tsx`          | chart, attendance, bar, trend       | 7-day CSS bar chart with animated bars (page-specific)                                            |
-| DepartmentBreakdown          | `src/app/dashboard/components/DepartmentBreakdown.tsx`      | department, breakdown, distribution | Horizontal bar chart per department with color coding (page-specific)                             |
-| RecentActivity               | `src/app/dashboard/components/RecentActivity.tsx`           | activity, feed, timeline, event     | Activity feed with unread indicators and relative timestamps (page-specific)                      |
-| CardSkeleton / TableSkeleton | `src/app/dashboard/components/Skeleton.tsx`                 | skeleton, loading, placeholder      | Animated skeleton placeholders for cards and table (page-specific)                                |
-| Button                       | `src/components/ui/button.tsx`                              | button, action, cva, variants       | shadcn Button with variant/size props via class-variance-authority (default/outline/ghost/etc.)   |
-| Input                        | `src/components/ui/input.tsx`                               | input, text, field, form            | Styled input field with focus ring, disabled state, invalid state                                 |
-| Label                        | `src/components/ui/label.tsx`                               | label, form, input-label            | Accessible form label with peer-disabled support                                                  |
-| Card                         | `src/components/ui/card.tsx`                                | card, container, section, layout    | Container with CardHeader/CardTitle/CardDescription/CardContent/CardFooter sub-components         |
-| Badge                        | `src/components/ui/badge.tsx`                               | badge, status, tag, label           | Status indicator badge with variant support (default/secondary/destructive)                       |
-| Table                        | `src/components/ui/table.tsx`                               | table, data, rows, columns          | Shadcn table with TableHeader/TableBody/TableRow/TableCell/TableHead sub-components               |
-| Avatar                       | `src/components/ui/avatar.tsx`                              | avatar, image, profile, user        | User avatar with fallback initials and size variants                                              |
-| Dropdown Menu                | `src/components/ui/dropdown-menu.tsx`                       | dropdown, menu, context, action     | Dropdown menu with items, separators, and sub-triggers                                            |
-| Separator                    | `src/components/ui/separator.tsx`                           | separator, divider, hr              | Horizontal/vertical divider for visual grouping                                                   |
-| Tooltip                      | `src/components/ui/tooltip.tsx`                             | tooltip, hint, info, hover          | Hover tooltip with position variants                                                              |
-| Select                       | `src/components/ui/select.tsx`                              | select, dropdown, picker, option    | Select dropdown with trigger, content, and item sub-components                                    |
-| Sheet                        | `src/components/ui/sheet.tsx`                               | sheet, drawer, panel, slide         | Slide-in panel from any side                                                                      |
-| Sidebar                      | `src/components/ui/sidebar.tsx`                             | sidebar, navigation, menu, nav      | Collapsible sidebar with Provider, Trigger, Menu, and group items                                 |
-| Skeleton                     | `src/components/ui/skeleton.tsx`                            | skeleton, loading, placeholder      | Base skeleton primitive for loading states                                                        |
+| Component                    | Tags                                | Details Reference     |
+| ---------------------------- | ----------------------------------- | --------------------- |
+| LoginForm                    | login, auth, form, email, password  | [Details](#L42-L45)   |
+| PasswordStrengthIndicator    | password, strength, meter, rating   | [Details](#L47-L50)   |
+| ForgotPasswordForm           | forgot-password, reset, auth, email | [Details](#L52-L55)   |
+| StatCards                    | stats, metrics, cards, dashboard    | [Details](#L57-L60)   |
+| EmployeeTable                | table, employee, filter, search     | [Details](#L62-L65)   |
+| AttendanceChart              | chart, attendance, bar, trend       | [Details](#L67-L70)   |
+| DepartmentBreakdown          | department, breakdown, distribution | [Details](#L72-L75)   |
+| RecentActivity               | activity, feed, timeline, event     | [Details](#L77-L80)   |
+| CardSkeleton / TableSkeleton | skeleton, loading, placeholder      | [Details](#L82-L85)   |
+| Button                       | button, action, cva, variants       | [Details](#L87-L90)   |
+| Input                        | input, text, field, form            | [Details](#L92-L95)   |
+| Label                        | label, form, input-label            | [Details](#L97-L100)  |
+| Card                         | card, container, section, layout    | [Details](#L102-L105) |
+| Badge                        | badge, status, tag, label           | [Details](#L107-L110) |
+| Table                        | table, data, rows, columns          | [Details](#L112-L115) |
+| Avatar                       | avatar, image, profile, user        | [Details](#L117-L120) |
+| Dropdown Menu                | dropdown, menu, context, action     | [Details](#L122-L125) |
+| Separator                    | separator, divider, hr              | [Details](#L127-L130) |
+| Tooltip                      | tooltip, hint, info, hover          | [Details](#L132-L135) |
+| Select                       | select, dropdown, picker, option    | [Details](#L137-L140) |
+| Sheet                        | sheet, drawer, panel, slide         | [Details](#L142-L145) |
+| Sidebar                      | sidebar, navigation, menu, nav      | [Details](#L147-L150) |
+| Skeleton                     | skeleton, loading, placeholder      | [Details](#L152-L155) |
+
+## 2. Deep Dives
+
+### LoginForm
+
+- **Path:** `src/app/login/components/LoginForm.tsx`
+- **Description:** Login form with shadcn Card/Input/Label/Button, Zod validation, password strength (page-specific)
+- **Source Code:** [src/app/login/components/LoginForm.tsx#L1-L150](../../../../src/app/login/components/LoginForm.tsx#L1-L150)
+
+### PasswordStrengthIndicator
+
+- **Path:** `src/app/login/components/PasswordStrength.tsx`
+- **Description:** Colored progress bar displaying password strength: too easy / fair / strong (page-specific)
+- **Source Code:** [src/app/login/components/PasswordStrength.tsx#L1-L150](../../../../src/app/login/components/PasswordStrength.tsx#L1-L150)
+
+### ForgotPasswordForm
+
+- **Path:** `src/app/forgot-password/components/ForgotPasswordForm.tsx`
+- **Description:** Forgot password form with shadcn Card/Input/Label/Button, Zod validation (page-specific)
+- **Source Code:** [src/app/forgot-password/components/ForgotPasswordForm.tsx#L1-L150](../../../../src/app/forgot-password/components/ForgotPasswordForm.tsx#L1-L150)
+
+### StatCards
+
+- **Path:** `src/app/dashboard/components/StatCards.tsx`
+- **Description:** 4 stat cards (total/present/on-leave/absent) with stagger fade-up animation (page-specific)
+- **Source Code:** [src/app/dashboard/components/StatCards.tsx#L1-L150](../../../../src/app/dashboard/components/StatCards.tsx#L1-L150)
+
+### EmployeeTable
+
+- **Path:** `src/app/dashboard/components/EmployeeTable.tsx`
+- **Description:** Shadcn Table with search/filter, status badges, and animated rows (page-specific)
+- **Source Code:** [src/app/dashboard/components/EmployeeTable.tsx#L1-L150](../../../../src/app/dashboard/components/EmployeeTable.tsx#L1-L150)
+
+### AttendanceChart
+
+- **Path:** `src/app/dashboard/components/AttendanceChart.tsx`
+- **Description:** 7-day CSS bar chart with animated bars (page-specific)
+- **Source Code:** [src/app/dashboard/components/AttendanceChart.tsx#L1-L150](../../../../src/app/dashboard/components/AttendanceChart.tsx#L1-L150)
+
+### DepartmentBreakdown
+
+- **Path:** `src/app/dashboard/components/DepartmentBreakdown.tsx`
+- **Description:** Horizontal bar chart per department with color coding (page-specific)
+- **Source Code:** [src/app/dashboard/components/DepartmentBreakdown.tsx#L1-L150](../../../../src/app/dashboard/components/DepartmentBreakdown.tsx#L1-L150)
+
+### RecentActivity
+
+- **Path:** `src/app/dashboard/components/RecentActivity.tsx`
+- **Description:** Activity feed with unread indicators and relative timestamps (page-specific)
+- **Source Code:** [src/app/dashboard/components/RecentActivity.tsx#L1-L150](../../../../src/app/dashboard/components/RecentActivity.tsx#L1-L150)
+
+### CardSkeleton / TableSkeleton
+
+- **Path:** `src/app/dashboard/components/Skeleton.tsx`
+- **Description:** Animated skeleton placeholders for cards and table (page-specific)
+- **Source Code:** [src/app/dashboard/components/Skeleton.tsx#L1-L150](../../../../src/app/dashboard/components/Skeleton.tsx#L1-L150)
+
+### Button
+
+- **Path:** `src/components/ui/button.tsx`
+- **Description:** shadcn Button with variant/size props via class-variance-authority (default/outline/ghost/etc.)
+- **Source Code:** [src/components/ui/button.tsx#L1-L150](../../../../src/components/ui/button.tsx#L1-L150)
+
+### Input
+
+- **Path:** `src/components/ui/input.tsx`
+- **Description:** Styled input field with focus ring, disabled state, invalid state
+- **Source Code:** [src/components/ui/input.tsx#L1-L150](../../../../src/components/ui/input.tsx#L1-L150)
+
+### Label
+
+- **Path:** `src/components/ui/label.tsx`
+- **Description:** Accessible form label with peer-disabled support
+- **Source Code:** [src/components/ui/label.tsx#L1-L150](../../../../src/components/ui/label.tsx#L1-L150)
+
+### Card
+
+- **Path:** `src/components/ui/card.tsx`
+- **Description:** Container with CardHeader/CardTitle/CardDescription/CardContent/CardFooter sub-components
+- **Source Code:** [src/components/ui/card.tsx#L1-L150](../../../../src/components/ui/card.tsx#L1-L150)
+
+### Badge
+
+- **Path:** `src/components/ui/badge.tsx`
+- **Description:** Status indicator badge with variant support (default/secondary/destructive)
+- **Source Code:** [src/components/ui/badge.tsx#L1-L150](../../../../src/components/ui/badge.tsx#L1-L150)
+
+### Table
+
+- **Path:** `src/components/ui/table.tsx`
+- **Description:** Shadcn table with TableHeader/TableBody/TableRow/TableCell/TableHead sub-components
+- **Source Code:** [src/components/ui/table.tsx#L1-L150](../../../../src/components/ui/table.tsx#L1-L150)
+
+### Avatar
+
+- **Path:** `src/components/ui/avatar.tsx`
+- **Description:** User avatar with fallback initials and size variants
+- **Source Code:** [src/components/ui/avatar.tsx#L1-L150](../../../../src/components/ui/avatar.tsx#L1-L150)
+
+### Dropdown Menu
+
+- **Path:** `src/components/ui/dropdown-menu.tsx`
+- **Description:** Dropdown menu with items, separators, and sub-triggers
+- **Source Code:** [src/components/ui/dropdown-menu.tsx#L1-L150](../../../../src/components/ui/dropdown-menu.tsx#L1-L150)
+
+### Separator
+
+- **Path:** `src/components/ui/separator.tsx`
+- **Description:** Horizontal/vertical divider for visual grouping
+- **Source Code:** [src/components/ui/separator.tsx#L1-L150](../../../../src/components/ui/separator.tsx#L1-L150)
+
+### Tooltip
+
+- **Path:** `src/components/ui/tooltip.tsx`
+- **Description:** Hover tooltip with position variants
+- **Source Code:** [src/components/ui/tooltip.tsx#L1-L150](../../../../src/components/ui/tooltip.tsx#L1-L150)
+
+### Select
+
+- **Path:** `src/components/ui/select.tsx`
+- **Description:** Select dropdown with trigger, content, and item sub-components
+- **Source Code:** [src/components/ui/select.tsx#L1-L150](../../../../src/components/ui/select.tsx#L1-L150)
+
+### Sheet
+
+- **Path:** `src/components/ui/sheet.tsx`
+- **Description:** Slide-in panel from any side
+- **Source Code:** [src/components/ui/sheet.tsx#L1-L150](../../../../src/components/ui/sheet.tsx#L1-L150)
+
+### Sidebar
+
+- **Path:** `src/components/ui/sidebar.tsx`
+- **Description:** Collapsible sidebar with Provider, Trigger, Menu, and group items
+- **Source Code:** [src/components/ui/sidebar.tsx#L1-L150](../../../../src/components/ui/sidebar.tsx#L1-L150)
+
+### Skeleton
+
+- **Path:** `src/components/ui/skeleton.tsx`
+- **Description:** Base skeleton primitive for loading states
+- **Source Code:** [src/components/ui/skeleton.tsx#L1-L150](../../../../src/components/ui/skeleton.tsx#L1-L150)
 
 ## Rules
 

@@ -31,19 +31,19 @@ These are **token-efficient reference nodes**. Always use this workflow:
 
 ### Doc Index
 
-| Doc               | Path                                         | What it tracks                     |
-| ----------------- | -------------------------------------------- | ---------------------------------- |
-| UI Components     | `src/components/ui/ui.components.md`         | small reusable components          |
-| Global Components | `src/components/global/global.components.md` | large cross-session components     |
-| Hooks             | `src/hooks/hooks.md`                         | global hooks                       |
-| Services          | `src/services/services.md`                   | global services                    |
-| Types             | `src/types/<feature>.type.ts`                | shared TypeScript types            |
-| Data              | `src/data/<feature>.data.ts`                 | dummy/mock data                    |
-| Project Memory    | `src/context/memory.md`                      | business logic, decisions, taste   |
-| This file         | `AGENTS.md`                                  | entry point, conventions, workflow |
+| Doc               | Path                                                                                     | What it tracks                     |
+| ----------------- | ---------------------------------------------------------------------------------------- | ---------------------------------- |
+| UI Components     | [ui.components.md Quick Index](./src/components/ui/ui.components.md#L13-L40)             | small reusable components          |
+| Global Components | [global.components.md Quick Index](./src/components/global/global.components.md#L13-L17) | large cross-session components     |
+| Hooks             | [hooks.md Quick Index](./src/hooks/hooks.md#L11-L15)                                     | global hooks                       |
+| Services          | [services.md Quick Index](./src/services/services.md#L11-L15)                            | global services                    |
+| Types             | `src/types/<feature>.type.ts`                                                            | shared TypeScript types            |
+| Data              | `src/data/<feature>.data.ts`                                                             | dummy/mock data                    |
+| Project Memory    | [memory.md Quick Index](./src/context/memory.md#L6-L15)                                  | business logic, decisions, taste   |
+| Developer Taste   | [taste.md Quick Index](./.commandcode/taste/taste.md#L1-L7)                              | developer style preferences        |
+| This file         | `AGENTS.md`                                                                              | entry point, conventions, workflow |
 
-Each doc has an index table with: **Name, File, Tags (keywords), Description**.
-Tags include alternative names so agents find components even with different search terms.
+Each doc has a **Quick Index** linking to a **Deep Dive**. Always read the Quick Index first.
 
 ---
 

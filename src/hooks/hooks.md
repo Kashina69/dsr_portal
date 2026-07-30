@@ -8,11 +8,15 @@
 - Named export: `use<hookName>`
 - Max 200 lines. Split concerns into separate hooks if larger.
 
-## Index
+## 1. Quick Index
 
-| Hook                     | File | Tags | Description |
-| ------------------------ | ---- | ---- | ----------- |
-| (empty — add as created) |      |      |             |
+| Hook                     | Tags | Details Reference |
+| ------------------------ | ---- | ----------------- |
+| (empty — add as created) |      |                   |
+
+## 2. Deep Dives
+
+_(empty - add as created)_
 
 ## Rules
 

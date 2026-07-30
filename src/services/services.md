@@ -8,11 +8,15 @@
 - Named exports for each function
 - Max 300 lines. Split into domain-specific services if larger.
 
-## Index
+## 1. Quick Index
 
-| Service                  | File | Tags | Description |
-| ------------------------ | ---- | ---- | ----------- |
-| (empty — add as created) |      |      |             |
+| Service                  | Tags | Details Reference |
+| ------------------------ | ---- | ----------------- |
+| (empty — add as created) |      |                   |
+
+## 2. Deep Dives
+
+_(empty - add as created)_
 
 ## Rules
 
