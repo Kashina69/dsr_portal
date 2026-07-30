@@ -33,8 +33,8 @@ These are **token-efficient reference nodes**. Always use this workflow:
 
 | Doc               | Path                                                                                     | What it tracks                     |
 | ----------------- | ---------------------------------------------------------------------------------------- | ---------------------------------- |
-| UI Components     | [ui.components.md Quick Index](./src/components/ui/ui.components.md#L12-L43)             | small reusable components          |
-| Global Components | [global.components.md Quick Index](./src/components/global/global.components.md#L12-L16) | large cross-session components     |
+| UI Components     | [ui.components.md Quick Index](./src/components/ui/ui.components.md#L14-L43)             | small reusable components          |
+| Global Components | [global.components.md Quick Index](./src/components/global/global.components.md#L14-L17) | large cross-session components     |
 | Hooks             | [hooks.md Quick Index](./src/hooks/hooks.md#L11-L15)                                     | global hooks                       |
 | Services          | [services.md Quick Index](./src/services/services.md#L11-L15)                            | global services                    |
 | Types             | `src/types/<feature>.type.ts`                                                            | shared TypeScript types            |

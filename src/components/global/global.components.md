@@ -11,13 +11,17 @@
 
 ## 1. Quick Index
 
-| Component                | Tags | Details Reference |
-| ------------------------ | ---- | ----------------- |
-| (empty — add as created) |      |                   |
+| Component     | Tags                   | Details Reference   |
+| ------------- | ---------------------- | ------------------- |
+| AppPagination | pagination, navigation | [Details](#L18-L21) |
 
 ## 2. Deep Dives
 
-_(empty - add as created)_
+### AppPagination
+
+- **Path:** `src/components/global/AppPagination.tsx`
+- **Description:** Cross-module pagination wrapping shadcn Pagination primitives. Numbered pages with prev/next, ellipsis for large page counts.
+- **Used by:** DSR Sent list, DSR Received list, Weekly Report Sent list, Weekly Report Received list
 
 ## Rules
 
