@@ -4,12 +4,12 @@
 
 ## 1. Quick Index
 
-| Section                 | Reference           |
-| ----------------------- | ------------------- |
-| Business Logic          | [Details](#L13-L17) |
-| Architecture Decisions  | [Details](#L19-L23) |
-| Known Gaps / TODOs      | [Details](#L25-L29) |
-| Taste / Preferences     | [Details](#L31-L34) |
+| Section                | Reference           |
+| ---------------------- | ------------------- |
+| Business Logic         | [Details](#L13-L17) |
+| Architecture Decisions | [Details](#L19-L23) |
+| Known Gaps / TODOs     | [Details](#L25-L29) |
+| Taste / Preferences    | [Details](#L31-L34) |
 
 ## Business Logic
 
