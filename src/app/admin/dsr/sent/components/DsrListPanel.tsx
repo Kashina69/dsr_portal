@@ -4,8 +4,8 @@ import { Search } from "lucide-react";
 import { useState } from "react";
 
 import { AppPagination } from "@/components/global/AppPagination";
-import { StatusBadge } from "@/components/ui/StatusBadge";
 import { Input } from "@/components/ui/input";
+import { StatusBadge } from "@/components/ui/StatusBadge";
 import { cn } from "@/lib/utils";
 
 import type { Dsr } from "../../dsr.types";

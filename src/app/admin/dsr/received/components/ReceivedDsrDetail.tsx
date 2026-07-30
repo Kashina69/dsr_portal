@@ -5,8 +5,6 @@ import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { DsrEntryBlock } from "../../components/DsrEntryBlock";
-import { StatusBadge } from "@/components/ui/StatusBadge";
 import { Input } from "@/components/ui/input";
 import {
     Sheet,
@@ -16,7 +14,9 @@ import {
     SheetHeader,
     SheetTitle,
 } from "@/components/ui/sheet";
+import { StatusBadge } from "@/components/ui/StatusBadge";
 
+import { DsrEntryBlock } from "../../components/DsrEntryBlock";
 import type { ReceivedDsr } from "../../dsr.types";
 
 interface ReceivedDsrDetailProps {

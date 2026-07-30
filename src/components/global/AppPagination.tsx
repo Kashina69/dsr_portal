@@ -33,11 +33,7 @@ export function AppPagination({ currentPage, totalPages, onPageChange }: AppPagi
             <PaginationContent>
                 <PaginationItem>
                     <PaginationPrevious
-                        onClick={
-                            currentPage > 1
-                                ? () => onPageChange(currentPage - 1)
-                                : undefined
-                        }
+                        onClick={currentPage > 1 ? () => onPageChange(currentPage - 1) : undefined}
                         aria-disabled={currentPage === 1}
                     />
                 </PaginationItem>

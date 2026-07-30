@@ -3,8 +3,8 @@
 import { CalendarDays } from "lucide-react";
 
 import { Card } from "@/components/ui/card";
-import { WeeklyReportDetail } from "../../components/WeeklyReportDetail";
 
+import { WeeklyReportDetail } from "../../components/WeeklyReportDetail";
 import type { WeeklyReport } from "../../weekly-report.types";
 
 interface SentReportDetailProps {

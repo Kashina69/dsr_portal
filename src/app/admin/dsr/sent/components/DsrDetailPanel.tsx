@@ -3,9 +3,9 @@
 import { AlertCircle, CalendarDays, Mail } from "lucide-react";
 
 import { CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { DsrEntryBlock } from "../../components/DsrEntryBlock";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 
+import { DsrEntryBlock } from "../../components/DsrEntryBlock";
 import type { Dsr } from "../../dsr.types";
 
 interface DsrDetailPanelProps {
