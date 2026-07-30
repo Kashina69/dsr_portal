@@ -8,7 +8,10 @@ export const dsrSubItems: NavItem[] = [
     { label: "Received DSR", href: "/admin/dsr/received" },
 ];
 
-export const placeholderItems: NavItem[] = [
-    { label: "Attendance Report", href: "#" },
-    { label: "Weekly Report", href: "#" },
+export const weeklyReportSubItems: NavItem[] = [
+    { label: "Add Report", href: "/admin/weekly-report/add" },
+    { label: "Sent Report", href: "/admin/weekly-report/sent" },
+    { label: "Received Report", href: "/admin/weekly-report/received" },
 ];
+
+export const placeholderItems: NavItem[] = [{ label: "Attendance Report", href: "#" }];

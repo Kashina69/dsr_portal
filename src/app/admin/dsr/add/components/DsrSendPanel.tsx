@@ -6,6 +6,7 @@ import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { CardContent, CardFooter } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { cn } from "@/lib/utils";
 
 import { ccOptions, teamMembers } from "../../dsr.data";
 
@@ -83,11 +84,12 @@ export function DsrSendPanel({
                                 <button
                                     key={member.email}
                                     onClick={() => onToggleSendTo(member.email)}
-                                    className={`flex items-center gap-2 rounded-full border px-2.5 py-1 text-xs transition-colors ${
+                                    className={cn(
+                                        "flex items-center gap-2 rounded-full border px-2.5 py-1 text-xs transition-colors",
                                         selected
                                             ? "border-primary bg-primary/10 text-primary"
-                                            : "border-border bg-background text-muted-foreground hover:border-primary/50"
-                                    }`}
+                                            : "border-border bg-background text-muted-foreground hover:border-primary/50",
+                                    )}
                                 >
                                     <span className="flex size-4 items-center justify-center rounded-full bg-primary/20 text-[10px] font-medium">
                                         {member.avatar}
@@ -108,11 +110,12 @@ export function DsrSendPanel({
                                 <button
                                     key={email}
                                     onClick={() => onToggleCcTo(email)}
-                                    className={`rounded-full border px-2.5 py-1 text-xs transition-colors ${
+                                    className={cn(
+                                        "rounded-full border px-2.5 py-1 text-xs transition-colors",
                                         selected
                                             ? "border-primary bg-primary/10 text-primary"
-                                            : "border-border bg-background text-muted-foreground hover:border-primary/50"
-                                    }`}
+                                            : "border-border bg-background text-muted-foreground hover:border-primary/50",
+                                    )}
                                 >
                                     {email}
                                 </button>

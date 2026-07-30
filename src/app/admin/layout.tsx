@@ -20,11 +20,14 @@ import {
 } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
 
-import { dsrSubItems, navItems, placeholderItems } from "./admin.data";
+import { dsrSubItems, navItems, placeholderItems, weeklyReportSubItems } from "./admin.data";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
     const [dsrOpen, setDsrOpen] = useState(false);
+    const [weeklyOpen, setWeeklyOpen] = useState(false);
+
+    const isWeeklyActive = pathname.startsWith("/admin/weekly-report");
 
     return (
         <SidebarProvider>
@@ -73,6 +76,31 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                     <SidebarGroup>
                         <SidebarGroupLabel>Reports</SidebarGroupLabel>
                         <SidebarMenu>
+                            <SidebarMenuItem>
+                                <SidebarMenuButton onClick={() => setWeeklyOpen(!weeklyOpen)}>
+                                    <span>Weekly Report</span>
+                                    <ChevronDown
+                                        className={cn(
+                                            "ml-auto size-4 transition-transform duration-200",
+                                            (weeklyOpen || isWeeklyActive) && "rotate-180",
+                                        )}
+                                    />
+                                </SidebarMenuButton>
+                                {(weeklyOpen || isWeeklyActive) && (
+                                    <SidebarMenuSub>
+                                        {weeklyReportSubItems.map((subItem) => (
+                                            <SidebarMenuSubItem key={subItem.label}>
+                                                <SidebarMenuSubButton
+                                                    isActive={pathname === subItem.href}
+                                                    render={<a href={subItem.href} />}
+                                                >
+                                                    <span>{subItem.label}</span>
+                                                </SidebarMenuSubButton>
+                                            </SidebarMenuSubItem>
+                                        ))}
+                                    </SidebarMenuSub>
+                                )}
+                            </SidebarMenuItem>
                             {placeholderItems.map((item) => (
                                 <SidebarMenuItem key={item.label}>
                                     <SidebarMenuButton
