@@ -1,7 +1,7 @@
 "use client";
 
-import { DsrPagination } from "@/components/ui/DsrPagination";
-import { DsrStatusBadge } from "@/components/ui/DsrStatusBadge";
+import { AppPagination } from "@/components/global/AppPagination";
+import { StatusBadge } from "@/components/ui/StatusBadge";
 import { cn } from "@/lib/utils";
 
 import type { ReceivedWeeklyReport } from "../../weekly-report.types";
@@ -51,7 +51,7 @@ export function ReceivedReportList({
                             >
                                 <div className="flex items-center justify-between">
                                     <span className="text-sm font-medium">{report.weekLabel}</span>
-                                    <DsrStatusBadge status={report.status} />
+                                    <StatusBadge status={report.status} />
                                 </div>
                                 <p className="mt-1 line-clamp-2 text-xs text-muted-foreground">
                                     {report.entries[0]?.description || "No entries"}
@@ -62,7 +62,7 @@ export function ReceivedReportList({
                 )}
             </div>
             <div className="border-t p-3">
-                <DsrPagination
+                <AppPagination
                     currentPage={page}
                     totalPages={totalPages}
                     onPageChange={onPageChange}

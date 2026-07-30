@@ -14,7 +14,7 @@ import {
     SheetHeader,
     SheetTitle,
 } from "@/components/ui/sheet";
-import { WeeklyReportDetail } from "@/components/ui/WeeklyReportDetail";
+import { WeeklyReportDetail } from "../../components/WeeklyReportDetail";
 
 import type { ReceivedWeeklyReport } from "../../weekly-report.types";
 

@@ -1,9 +1,10 @@
 import { AlertCircle, Mail } from "lucide-react";
 
-import type { WeeklyReportStatus } from "@/app/admin/weekly-report/weekly-report.types";
 import { Badge } from "@/components/ui/badge";
 import { CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+
+import type { WeeklyReportStatus } from "../weekly-report.types";
 
 interface WeeklyReportDetailProps {
     weekLabel: string;

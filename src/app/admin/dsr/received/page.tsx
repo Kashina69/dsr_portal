@@ -2,8 +2,8 @@
 
 import { useMemo, useState } from "react";
 
-import { DsrPagination } from "@/components/ui/DsrPagination";
-import { DsrStatusBadge } from "@/components/ui/DsrStatusBadge";
+import { AppPagination } from "@/components/global/AppPagination";
+import { StatusBadge } from "@/components/ui/StatusBadge";
 import { cn } from "@/lib/utils";
 
 import { mockReceivedDsrs } from "../dsr.data";
@@ -122,7 +122,7 @@ export default function ReceivedDsrPage() {
                                                 <span className="text-sm font-medium">
                                                     {dateStr}
                                                 </span>
-                                                <DsrStatusBadge status={dsr.status} />
+                                                <StatusBadge status={dsr.status} />
                                             </div>
                                             <p className="mt-1 line-clamp-2 text-xs text-muted-foreground">
                                                 {dsr.entries[0]?.description || "No entries"}
@@ -133,7 +133,7 @@ export default function ReceivedDsrPage() {
                             )}
                         </div>
                         <div className="border-t p-3">
-                            <DsrPagination
+                            <AppPagination
                                 currentPage={page}
                                 totalPages={totalPages}
                                 onPageChange={setPage}

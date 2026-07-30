@@ -5,8 +5,8 @@ import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { DsrEntryBlock } from "@/components/ui/DsrEntryBlock";
-import { DsrStatusBadge } from "@/components/ui/DsrStatusBadge";
+import { DsrEntryBlock } from "../../components/DsrEntryBlock";
+import { StatusBadge } from "@/components/ui/StatusBadge";
 import { Input } from "@/components/ui/input";
 import {
     Sheet,
@@ -73,7 +73,7 @@ export function ReceivedDsrDetail({ dsr }: ReceivedDsrDetailProps) {
                             Submitted by {dsr.submittedBy.name}
                         </p>
                     </div>
-                    <DsrStatusBadge status={status} />
+                    <StatusBadge status={status} />
                 </div>
             </CardHeader>
             <CardContent className="flex-1 space-y-1">

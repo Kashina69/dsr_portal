@@ -3,8 +3,8 @@
 import { AlertCircle, CalendarDays, Mail } from "lucide-react";
 
 import { CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { DsrEntryBlock } from "@/components/ui/DsrEntryBlock";
-import { DsrStatusBadge } from "@/components/ui/DsrStatusBadge";
+import { DsrEntryBlock } from "../../components/DsrEntryBlock";
+import { StatusBadge } from "@/components/ui/StatusBadge";
 
 import type { Dsr } from "../../dsr.types";
 
@@ -36,7 +36,7 @@ export function DsrDetailPanel({ dsr }: DsrDetailPanelProps) {
                     <div>
                         <CardTitle className="text-lg">{dateStr}</CardTitle>
                     </div>
-                    <DsrStatusBadge status={dsr.status} />
+                    <StatusBadge status={dsr.status} />
                 </div>
             </CardHeader>
             <CardContent className="flex-1 space-y-1">

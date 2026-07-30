@@ -3,8 +3,8 @@
 import { Search } from "lucide-react";
 import { useState } from "react";
 
-import { DsrPagination } from "@/components/ui/DsrPagination";
-import { DsrStatusBadge } from "@/components/ui/DsrStatusBadge";
+import { AppPagination } from "@/components/global/AppPagination";
+import { StatusBadge } from "@/components/ui/StatusBadge";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
@@ -84,7 +84,7 @@ export function DsrListPanel({ dsrs, selectedId, onSelect }: DsrListPanelProps) 
                             >
                                 <div className="flex items-center justify-between">
                                     <span className="text-sm font-medium">{dateStr}</span>
-                                    <DsrStatusBadge status={dsr.status} />
+                                    <StatusBadge status={dsr.status} />
                                 </div>
                                 <p className="mt-1 line-clamp-2 text-xs text-muted-foreground">
                                     {dsr.entries[0]?.description || "No entries"}
@@ -95,7 +95,7 @@ export function DsrListPanel({ dsrs, selectedId, onSelect }: DsrListPanelProps) 
                 )}
             </div>
             <div className="border-t p-3">
-                <DsrPagination currentPage={page} totalPages={totalPages} onPageChange={setPage} />
+                <AppPagination currentPage={page} totalPages={totalPages} onPageChange={setPage} />
             </div>
         </div>
     );
