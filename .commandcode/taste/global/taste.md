@@ -13,3 +13,4 @@
 - Prefers technical explanations in short bullet points with clear cause → effect structure (issue → fix → files changed), to quickly understand changes in the project. Confidence: 0.8
 - Prefers keeping AI/project documentation (AGENTS.md, memory.md, component docs) updated as the project evolves — surgical updates to only the stale parts, not full rewrites, and excluding README. Confidence: 0.8
 - Enforces max line limits per file and per function — splits code aggressively into smaller files, sub-components, hooks, and services to make the codebase easy for both humans and AI agents to understand, navigate, and debug following the best best practices mentioned above and followed in the project and follow projects folder structure. Confidence: 0.9
+- When asking for a diff between branches, wants the report broken down per file: file name, lines added/removed, and grouped by change status (files added, deleted, updated). Confidence: 0.7
