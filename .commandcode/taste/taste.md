@@ -4,6 +4,7 @@
 - Prefers indigo-tinted color schemes (slate-gray chrome + indigo accent) over generic blue-purple or neutral-gray SaaS palettes. Confidence: 0.9
 - Prefers product-grade motion: fast, functional animations (fade-up, slide-right, scale-in at 150-300ms) applied to stat reveals, table rows, and chart bars — no page-load theater or decorative animations. Confidence: 0.9
 - When given an image reference for a UI, builds a redesigned modern version that improves the layout, UX, and visual design — does not produce a direct copy. Confidence: 0.9
+- When redesigning a UI from a reference image/screenshot, preserves the data fields and schema from the original accurately — the visual presentation should be modernized, but the data structure (field names, types, relationships) must map to the reference because the database schema reflects those fields. Do not invent or rename data fields during redesign. Confidence: 0.8
 - Uses the design skill to guide UI decisions whenever building visual interfaces. Confidence: 0.8
 - Prefers an incremental workflow: improve existing pages first before discussing or expanding to new features. Confidence: 0.8
 - Prefers technical explanations in short bullet points with clear cause → effect structure (issue → fix → files changed), to quickly understand changes in the project. Confidence: 0.8
