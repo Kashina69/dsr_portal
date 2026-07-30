@@ -7,7 +7,9 @@
 - One component per file, named export
 - File max 200 lines. Split if exceeds.
 - Place in `src/components/ui/<ComponentName>.tsx`
-- Keep focused: button, input, modal, badge, etc.
+- **UI folder is for shadcn primitives (Button, Card, Badge, etc.) and micro generic wrappers (<50 lines, no domain coupling)**
+- Domain compositions (project chip + timeline, status badge logic) belong in their module's `components/` folder
+- Cross-module compositions go in `src/components/global/`
 
 ## 1. Quick Index
 
@@ -35,7 +37,9 @@
 | Select                       | select, dropdown, picker, option    | [Details](#L136-L139) |
 | Sheet                        | sheet, drawer, panel, slide         | [Details](#L141-L144) |
 | Sidebar                      | sidebar, navigation, menu, nav      | [Details](#L146-L149) |
-| Skeleton                     | skeleton, loading, placeholder      | [Details](#L151-L154) |
+| Skeleton                     | skeleton, loading, placeholder      | [Details](#L154-L157) |
+| Pagination                   | pagination, navigation              | [Details](#L159-L162) |
+| StatusBadge                  | status, badge, tag, pending         | [Details](#L164-L167) |
 
 ## 2. Deep Dives
 
@@ -177,9 +181,23 @@
 - **Description:** Base skeleton primitive for loading states
 - **Source Code:** [src/components/ui/skeleton.tsx#L1-L150](../../../../src/components/ui/skeleton.tsx#L1-L150)
 
+### Pagination
+
+- **Path:** `src/components/ui/pagination.tsx`
+- **Description:** Shadcn pagination primitives — Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationEllipsis, PaginationPrevious, PaginationNext
+- **Source Code:** [src/components/ui/pagination.tsx#L1-L130](../../../../src/components/ui/pagination.tsx#L1-L130)
+
+### StatusBadge
+
+- **Path:** `src/components/ui/StatusBadge.tsx`
+- **Description:** Generic status badge — wraps shadcn Badge with color mapping (pending/approved/rejected). Accepts custom variant maps. No domain coupling — works for DSR statuses, Weekly Report statuses, or any module.
+- **Used by:** All DSR pages, all Weekly Report pages
+
 ## Rules
 
-- If a component is used in 2+ routes → place here
+- **UI folder is for shadcn primitives only** (Button, Card, Badge, etc.) and micro generic wrappers
+- Domain compositions (DsrEntryBlock, WeeklyReportDetail) go in their module's `components/` folder
+- Cross-module compositions (AppPagination) go in `src/components/global/`
 - If a component grows beyond 200 lines → split into sub-components
 - If a component becomes session-specific → move to `src/app/<route>/components/`
 - If a component becomes large & cross-session → move to `src/components/global/`

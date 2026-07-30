@@ -14,6 +14,8 @@
 ## Business Logic
 
 - **Dashboard** — `/dashboard` shows workforce overview: stat cards, employee table, 7-day attendance bar chart, department distribution, and recent activity.
+- **DSR Module** — Three routes under `/admin/dsr/`: Add DSR (card-based form with inline entry editing, time auto-advance, send-to chip selection), Sent DSR (split-panel list + detail with search, pagination, status badges, timeline entry blocks), Received DSR (three-column manager view with submitter list, DSR list, detail with Approve/Reject actions and comments). All data is mock/static, structured for future DB integration.
+- **Weekly Report Module** — Three routes under `/admin/weekly-report/`: Add Report (project+description entry rows, week navigation, chip-based send-to/cc, submit enabled when ≥1 entry + ≥1 recipient), Sent Reports (split-panel with filter tabs, search, pagination), Received Reports (three-column manager view with submitter list, report list, detail with Approve/Reject + comments). Entries have no time fields — project name + description only. Weekly cadence, same Pending/Approved/Rejected flow as DSR.
 - **Color scheme** — Tinted slate + indigo accent. Neutrals carry ~0.005 indigo chroma.
 - **Motion** — Product-grade only: fade-up (200ms), slide-right (300ms), scale-in (200ms). All `motion-safe:` prefixed.
 
@@ -21,6 +23,8 @@
 
 - **Styled with shadcn/ui** — use Card, Input, Label, and Button. Styling applied alongside functionality.
 - **Dashboard composition** — Monitor pattern (status, metrics, trends). Sidebar + header layout shell. Page-specific components in `app/dashboard/components/`.
+- **Sidebar promoted to `/admin/` level** — `src/app/admin/layout.tsx` wraps all admin routes with the shared sidebar shell. Individual route layouts (dashboard, dsr) are thin wrappers (metadata only). DSR nav group is a collapsible `SidebarMenuItem` with `useState` toggle + `ChevronDown` animation.
+- **DSR collapsible nav** — DSR expands to three sub-items (Add/Sent/Received) in the sidebar. Toggle state managed via `useState` in the admin layout. Active state computed from `usePathname()`.
 - **Charts** — Pure CSS/div bars, no chart library dependency.
 
 ## Known Gaps / TODOs
