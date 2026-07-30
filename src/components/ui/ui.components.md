@@ -36,6 +36,9 @@
 | Sheet                        | sheet, drawer, panel, slide         | [Details](#L141-L144) |
 | Sidebar                      | sidebar, navigation, menu, nav      | [Details](#L146-L149) |
 | Skeleton                     | skeleton, loading, placeholder      | [Details](#L151-L154) |
+| DsrEntryBlock                | dsr, entry, timeline, block         | [Details](#L156-L159) |
+| DsrStatusBadge               | dsr, status, badge, tag             | [Details](#L161-L164) |
+| DsrPagination                | dsr, pagination, navigation         | [Details](#L166-L169) |
 
 ## 2. Deep Dives
 
@@ -176,6 +179,24 @@
 - **Path:** `src/components/ui/skeleton.tsx`
 - **Description:** Base skeleton primitive for loading states
 - **Source Code:** [src/components/ui/skeleton.tsx#L1-L150](../../../../src/components/ui/skeleton.tsx#L1-L150)
+
+### DsrEntryBlock
+
+- **Path:** `src/components/ui/DsrEntryBlock.tsx`
+- **Description:** Timeline-style DSR entry block with project chip, time range pill, description, and connecting vertical line
+- **Used by:** Sent DSR detail panel, Received DSR detail panel
+
+### DsrStatusBadge
+
+- **Path:** `src/components/ui/DsrStatusBadge.tsx`
+- **Description:** Color-coded status badge — amber for Pending, emerald for Approved, destructive for Rejected
+- **Used by:** Add DSR page, Sent DSR list/detail, Received DSR list/detail
+
+### DsrPagination
+
+- **Path:** `src/components/ui/DsrPagination.tsx`
+- **Description:** Numbered pagination with prev/next arrows and ellipsis for large page counts
+- **Used by:** Sent DSR list, Received DSR list
 
 ## Rules
 
