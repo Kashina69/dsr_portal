@@ -17,6 +17,10 @@ This architecture is designed to be **context-rich but token-efficient**. The AI
 
 **Self-Improving Workflow:** As you work on the project, you must automatically maintain this index. If you add a component, you MUST add it to the Quick Index, append its Deep Dive, and if line numbers shift, you MUST proactively calculate the new line numbers and update `AGENTS.md` and the Quick Indexes. This ensures the indexing stays 100% accurate and self-improving.
 
+**Strict Single Source of Truth (SSOT):** Never duplicate information across files. `PROJECT.md` is the absolute single source of truth for the Tech Stack, Code Conventions, File Size Limits, and Linting Rules. Do not duplicate these in `memory.md` or elsewhere.
+
+**No Conversational Fluff:** Keep documentation ruthlessly concise. Do not include chatty filler text (e.g., "> Usage: Grep this file..."). Rely entirely on the 3-level graph for navigation.
+
 ---
 
 ### 2. Scaffold `PROJECT.md`
@@ -71,8 +75,6 @@ Create the core registry files (e.g., `src/components/ui/ui.components.md`, `src
 
 ```markdown
 # [Domain Name] Registry
-
-> **Usage:** Grep this file for a keyword/tag before reading full entries.
 
 ## 1. Quick Index
 

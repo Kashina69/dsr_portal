@@ -1,7 +1,6 @@
 # Global Components (large, cross-session)
 
 > **Usage:** Grep for keyword before full read.
-> These are big layout/piece components used across routes.
 
 ## Convention
 

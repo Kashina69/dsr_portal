@@ -33,13 +33,13 @@ These are **token-efficient reference nodes**. Always use this workflow:
 
 | Doc               | Path                                                                                     | What it tracks                     |
 | ----------------- | ---------------------------------------------------------------------------------------- | ---------------------------------- |
-| UI Components     | [ui.components.md Quick Index](./src/components/ui/ui.components.md#L13-L40)             | small reusable components          |
-| Global Components | [global.components.md Quick Index](./src/components/global/global.components.md#L13-L17) | large cross-session components     |
+| UI Components     | [ui.components.md Quick Index](./src/components/ui/ui.components.md#L12-L39)             | small reusable components          |
+| Global Components | [global.components.md Quick Index](./src/components/global/global.components.md#L12-L16) | large cross-session components     |
 | Hooks             | [hooks.md Quick Index](./src/hooks/hooks.md#L11-L15)                                     | global hooks                       |
 | Services          | [services.md Quick Index](./src/services/services.md#L11-L15)                            | global services                    |
 | Types             | `src/types/<feature>.type.ts`                                                            | shared TypeScript types            |
 | Data              | `src/data/<feature>.data.ts`                                                             | dummy/mock data                    |
-| Project Memory    | [memory.md Quick Index](./src/context/memory.md#L6-L15)                                  | business logic, decisions, taste   |
+| Project Memory    | [memory.md Quick Index](./src/context/memory.md#L5-L12)                                  | business logic, decisions, taste   |
 | Developer Taste   | [taste.md Quick Index](./.commandcode/taste/taste.md#L1-L7)                              | developer style preferences        |
 | This file         | `AGENTS.md`                                                                              | entry point, conventions, workflow |
 

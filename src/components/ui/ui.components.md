@@ -1,7 +1,6 @@
 # UI Components (small, reusable)
 
-> **Usage:** Grep this file for a keyword/tag before reading full entries.
-> Tokens won't be wasted reading everything.
+> **Usage:** Grep for keyword/tag before reading full entries.
 
 ## Convention
 
@@ -14,29 +13,29 @@
 
 | Component                    | Tags                                | Details Reference     |
 | ---------------------------- | ----------------------------------- | --------------------- |
-| LoginForm                    | login, auth, form, email, password  | [Details](#L42-L45)   |
-| PasswordStrengthIndicator    | password, strength, meter, rating   | [Details](#L47-L50)   |
-| ForgotPasswordForm           | forgot-password, reset, auth, email | [Details](#L52-L55)   |
-| StatCards                    | stats, metrics, cards, dashboard    | [Details](#L57-L60)   |
-| EmployeeTable                | table, employee, filter, search     | [Details](#L62-L65)   |
-| AttendanceChart              | chart, attendance, bar, trend       | [Details](#L67-L70)   |
-| DepartmentBreakdown          | department, breakdown, distribution | [Details](#L72-L75)   |
-| RecentActivity               | activity, feed, timeline, event     | [Details](#L77-L80)   |
-| CardSkeleton / TableSkeleton | skeleton, loading, placeholder      | [Details](#L82-L85)   |
-| Button                       | button, action, cva, variants       | [Details](#L87-L90)   |
-| Input                        | input, text, field, form            | [Details](#L92-L95)   |
-| Label                        | label, form, input-label            | [Details](#L97-L100)  |
-| Card                         | card, container, section, layout    | [Details](#L102-L105) |
-| Badge                        | badge, status, tag, label           | [Details](#L107-L110) |
-| Table                        | table, data, rows, columns          | [Details](#L112-L115) |
-| Avatar                       | avatar, image, profile, user        | [Details](#L117-L120) |
-| Dropdown Menu                | dropdown, menu, context, action     | [Details](#L122-L125) |
-| Separator                    | separator, divider, hr              | [Details](#L127-L130) |
-| Tooltip                      | tooltip, hint, info, hover          | [Details](#L132-L135) |
-| Select                       | select, dropdown, picker, option    | [Details](#L137-L140) |
-| Sheet                        | sheet, drawer, panel, slide         | [Details](#L142-L145) |
-| Sidebar                      | sidebar, navigation, menu, nav      | [Details](#L147-L150) |
-| Skeleton                     | skeleton, loading, placeholder      | [Details](#L152-L155) |
+| LoginForm                    | login, auth, form, email, password  | [Details](#L41-L44)   |
+| PasswordStrengthIndicator    | password, strength, meter, rating   | [Details](#L46-L49)   |
+| ForgotPasswordForm           | forgot-password, reset, auth, email | [Details](#L51-L54)   |
+| StatCards                    | stats, metrics, cards, dashboard    | [Details](#L56-L59)   |
+| EmployeeTable                | table, employee, filter, search     | [Details](#L61-L64)   |
+| AttendanceChart              | chart, attendance, bar, trend       | [Details](#L66-L69)   |
+| DepartmentBreakdown          | department, breakdown, distribution | [Details](#L71-L74)   |
+| RecentActivity               | activity, feed, timeline, event     | [Details](#L76-L79)   |
+| CardSkeleton / TableSkeleton | skeleton, loading, placeholder      | [Details](#L81-L84)   |
+| Button                       | button, action, cva, variants       | [Details](#L86-L89)   |
+| Input                        | input, text, field, form            | [Details](#L91-L94)   |
+| Label                        | label, form, input-label            | [Details](#L96-L99)   |
+| Card                         | card, container, section, layout    | [Details](#L101-L104) |
+| Badge                        | badge, status, tag, label           | [Details](#L106-L109) |
+| Table                        | table, data, rows, columns          | [Details](#L111-L114) |
+| Avatar                       | avatar, image, profile, user        | [Details](#L116-L119) |
+| Dropdown Menu                | dropdown, menu, context, action     | [Details](#L121-L124) |
+| Separator                    | separator, divider, hr              | [Details](#L126-L129) |
+| Tooltip                      | tooltip, hint, info, hover          | [Details](#L131-L134) |
+| Select                       | select, dropdown, picker, option    | [Details](#L136-L139) |
+| Sheet                        | sheet, drawer, panel, slide         | [Details](#L141-L144) |
+| Sidebar                      | sidebar, navigation, menu, nav      | [Details](#L146-L149) |
+| Skeleton                     | skeleton, loading, placeholder      | [Details](#L151-L154) |
 
 ## 2. Deep Dives
 
