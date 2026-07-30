@@ -39,6 +39,7 @@
 | DsrEntryBlock                | dsr, entry, timeline, block         | [Details](#L156-L159) |
 | DsrStatusBadge               | dsr, status, badge, tag             | [Details](#L161-L164) |
 | DsrPagination                | dsr, pagination, navigation         | [Details](#L166-L169) |
+| WeeklyReportDetail           | weekly-report, detail, report       | [Details](#L171-L174) |
 
 ## 2. Deep Dives
 
@@ -197,6 +198,12 @@
 - **Path:** `src/components/ui/DsrPagination.tsx`
 - **Description:** Numbered pagination with prev/next arrows and ellipsis for large page counts
 - **Used by:** Sent DSR list, Received DSR list
+
+### WeeklyReportDetail
+
+- **Path:** `src/components/ui/WeeklyReportDetail.tsx`
+- **Description:** Full weekly report detail renderer — week label, status badge, entry list (project chip + description), send-to chips, CC row, optional rejection alert
+- **Used by:** Sent Weekly Report detail, Received Weekly Report detail
 
 ## Rules
 

@@ -15,6 +15,7 @@
 
 - **Dashboard** — `/dashboard` shows workforce overview: stat cards, employee table, 7-day attendance bar chart, department distribution, and recent activity.
 - **DSR Module** — Three routes under `/admin/dsr/`: Add DSR (card-based form with inline entry editing, time auto-advance, send-to chip selection), Sent DSR (split-panel list + detail with search, pagination, status badges, timeline entry blocks), Received DSR (three-column manager view with submitter list, DSR list, detail with Approve/Reject actions and comments). All data is mock/static, structured for future DB integration.
+- **Weekly Report Module** — Three routes under `/admin/weekly-report/`: Add Report (project+description entry rows, week navigation, chip-based send-to/cc, submit enabled when ≥1 entry + ≥1 recipient), Sent Reports (split-panel with filter tabs, search, pagination), Received Reports (three-column manager view with submitter list, report list, detail with Approve/Reject + comments). Entries have no time fields — project name + description only. Weekly cadence, same Pending/Approved/Rejected flow as DSR.
 - **Color scheme** — Tinted slate + indigo accent. Neutrals carry ~0.005 indigo chroma.
 - **Motion** — Product-grade only: fade-up (200ms), slide-right (300ms), scale-in (200ms). All `motion-safe:` prefixed.
 
