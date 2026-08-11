@@ -24,7 +24,7 @@
 - **Styled with shadcn/ui** — use Card, Input, Label, and Button. Styling applied alongside functionality.
 - **Dashboard composition** — Monitor pattern (status, metrics, trends). Sidebar + header layout shell. Page-specific components in `app/dashboard/components/`.
 - **Sidebar promoted to `/admin/` level** — `src/app/admin/layout.tsx` wraps all admin routes with the shared sidebar shell. Individual route layouts (dashboard, dsr) are thin wrappers (metadata only). DSR nav group is a collapsible `SidebarMenuItem` with `useState` toggle + `ChevronDown` animation.
-- **DSR collapsible nav** — DSR expands to three sub-items (Add/Sent/Received) in the sidebar. Toggle state managed via `useState` in the admin layout. Active state computed from `usePathname()`.
+- **Shared report components** — DSR and Weekly Report share 5 components (`EmptyState`, `EntryBlock`, `StatusBar`, `SubmitterList`, `SendPanel`) and a `useToggleList` hook extracted from duplicated code. Shared types at `src/types/report.type.ts`, shared data at `src/data/report.data.ts`. Domain-specific types (`dsr.types.ts`, `weekly-report.types.ts`) re-export from shared where applicable.
 - **Charts** — Pure CSS/div bars, no chart library dependency.
 
 ## Known Gaps / TODOs

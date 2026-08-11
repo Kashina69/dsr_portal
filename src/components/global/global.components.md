@@ -14,6 +14,11 @@
 | Component     | Tags                   | Details Reference   |
 | ------------- | ---------------------- | ------------------- |
 | AppPagination | pagination, navigation | [Details](#L18-L21) |
+| EmptyState    | empty, placeholder, fallback | `src/components/ui/EmptyState.tsx` — cross-module empty state with icon + message |
+| EntryBlock    | dsr, entry, timeline      | `src/components/ui/EntryBlock.tsx` — timeline entry renderer with optional time slot |
+| StatusBar     | stats, status, grid        | `src/components/ui/StatusBar.tsx` — 4-stat grid for total/pending/approved/rejected |
+| SubmitterList | submitter, list, selection | `src/components/ui/SubmitterList.tsx` — submitter list with avatar, name, pending badge |
+| SendPanel     | send, recipients, form     | `src/components/ui/SendPanel.tsx` — send-to/cc chip selector + optional attachments |
 
 ## 2. Deep Dives
 

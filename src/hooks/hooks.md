@@ -10,13 +10,17 @@
 
 ## 1. Quick Index
 
-| Hook                     | Tags | Details Reference |
-| ------------------------ | ---- | ----------------- |
-| (empty — add as created) |      |                   |
+| Hook           | Tags                    | Details Reference   |
+| -------------- | ----------------------- | ------------------- |
+| useToggleList  | toggle, selection, list | [Details](#L23-L30) |
 
 ## 2. Deep Dives
 
-_(empty - add as created)_
+### useToggleList
+
+- **Path:** `src/hooks/use-toggle-list.hook.ts`
+- **Description:** Generic toggle list hook for managing selected string values. Returns `{ items, toggle }`.
+- **Used by:** Add DSR page, Add Weekly Report page
 
 ## Rules
 
