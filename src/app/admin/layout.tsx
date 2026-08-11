@@ -4,6 +4,7 @@ import { ChevronDown } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
+import { ThemeToggle } from "@/components/theme-provider";
 import {
     Sidebar,
     SidebarContent,
@@ -110,6 +111,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                     <SidebarTrigger />
                     <div className="flex-1" />
                     <div className="flex items-center gap-3">
+                        <ThemeToggle />
                         <div className="flex size-8 items-center justify-center rounded-full bg-primary text-xs font-medium text-primary-foreground">
                             AD
                         </div>

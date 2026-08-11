@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 
+import { ThemeToggle } from "@/components/theme-provider";
 import {
     Sidebar,
     SidebarContent,
     SidebarGroup,
-    SidebarGroupLabel,
     SidebarMenu,
     SidebarMenuButton,
     SidebarMenuItem,
@@ -45,6 +45,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                     <p className="text-sm font-medium">DSR Portal</p>
                     <div className="flex-1" />
                     <div className="flex items-center gap-3">
+                        <ThemeToggle />
                         <div className="flex size-8 items-center justify-center rounded-full bg-primary text-xs font-medium text-primary-foreground">
                             AD
                         </div>
