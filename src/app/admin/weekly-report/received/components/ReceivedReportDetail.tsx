@@ -5,6 +5,7 @@ import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { EmptyState } from "@/components/ui/EmptyState";
 import { Input } from "@/components/ui/input";
 import {
     Sheet,
@@ -30,12 +31,7 @@ export function ReceivedReportDetail({ report }: ReceivedReportDetailProps) {
     const [newComment, setNewComment] = useState("");
 
     if (!report) {
-        return (
-            <div className="flex size-full flex-col items-center justify-center text-center">
-                <CalendarDays className="mb-3 size-10 text-muted-foreground/30" />
-                <p className="text-sm text-muted-foreground">Select a report to view details</p>
-            </div>
-        );
+        return <EmptyState icon={CalendarDays} message="Select a report to view details" />;
     }
 
     const status = localStatus ?? report.status;

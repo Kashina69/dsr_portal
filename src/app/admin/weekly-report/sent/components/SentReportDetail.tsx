@@ -3,6 +3,7 @@
 import { CalendarDays } from "lucide-react";
 
 import { Card } from "@/components/ui/card";
+import { EmptyState } from "@/components/ui/EmptyState";
 
 import { WeeklyReportDetail } from "../../components/WeeklyReportDetail";
 import type { WeeklyReport } from "../../weekly-report.types";
@@ -13,12 +14,7 @@ interface SentReportDetailProps {
 
 export function SentReportDetail({ report }: SentReportDetailProps) {
     if (!report) {
-        return (
-            <div className="flex size-full flex-col items-center justify-center text-center">
-                <CalendarDays className="mb-3 size-10 text-muted-foreground/30" />
-                <p className="text-sm text-muted-foreground">Select a report to view details</p>
-            </div>
-        );
+        return <EmptyState icon={CalendarDays} message="Select a report to view details" />;
     }
 
     return (

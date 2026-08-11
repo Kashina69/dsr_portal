@@ -5,6 +5,7 @@ import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { EmptyState } from "@/components/ui/EmptyState";
 import { Input } from "@/components/ui/input";
 import {
     Sheet,
@@ -31,12 +32,7 @@ export function ReceivedDsrDetail({ dsr }: ReceivedDsrDetailProps) {
     const [newComment, setNewComment] = useState("");
 
     if (!dsr) {
-        return (
-            <div className="flex h-full flex-col items-center justify-center text-center">
-                <CalendarDays className="mb-3 size-10 text-muted-foreground/30" />
-                <p className="text-sm text-muted-foreground">Select a DSR to view details</p>
-            </div>
-        );
+        return <EmptyState icon={CalendarDays} message="Select a DSR to view details" />;
     }
 
     const status = localStatus ?? dsr.status;
@@ -65,38 +61,40 @@ export function ReceivedDsrDetail({ dsr }: ReceivedDsrDetailProps) {
 
     return (
         <div className="flex h-full flex-col overflow-auto">
-            <CardHeader className="pb-3">
-                <div className="flex items-center justify-between">
-                    <div>
-                        <CardTitle className="text-lg">{dateStr}</CardTitle>
-                        <p className="text-sm text-muted-foreground">
-                            Submitted by {dsr.submittedBy.name}
-                        </p>
+            <div className="p-5 h-full">
+                <CardHeader className="pb-3">
+                    <div className="flex items-center justify-between">
+                        <div>
+                            <CardTitle className="text-lg">{dateStr}</CardTitle>
+                            <p className="text-sm text-muted-foreground">
+                                Submitted by {dsr.submittedBy.name}
+                            </p>
+                        </div>
+                        <StatusBadge status={status} />
                     </div>
-                    <StatusBadge status={status} />
-                </div>
-            </CardHeader>
-            <CardContent className="flex-1 space-y-1">
-                {status === "Rejected" && (
-                    <div className="mb-4 flex gap-2 rounded-lg border border-destructive/30 bg-destructive/5 p-3">
-                        <AlertCircle className="mt-0.5 size-4 shrink-0 text-destructive" />
-                        <p className="text-sm text-destructive">
-                            {dsr.rejectionReason || rejectReason || "Rejected"}
-                        </p>
-                    </div>
-                )}
-                <p className="mb-2 text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                    Entries
-                </p>
-                {dsr.entries.map((entry, i) => (
-                    <DsrEntryBlock
-                        key={entry.id}
-                        entry={entry}
-                        isLast={i === dsr.entries.length - 1}
-                    />
-                ))}
-            </CardContent>
-            <CardFooter className="flex flex-col gap-3 border-t pt-4">
+                </CardHeader>
+                <CardContent className="flex-1 space-y-1">
+                    {status === "Rejected" && (
+                        <div className="mb-4 flex gap-2 rounded-lg border border-destructive/30 bg-destructive/5 p-3">
+                            <AlertCircle className="mt-0.5 size-4 shrink-0 text-destructive" />
+                            <p className="text-sm text-destructive">
+                                {dsr.rejectionReason || rejectReason || "Rejected"}
+                            </p>
+                        </div>
+                    )}
+                    <p className="mb-2 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                        Entries
+                    </p>
+                    {dsr.entries.map((entry, i) => (
+                        <DsrEntryBlock
+                            key={entry.id}
+                            entry={entry}
+                            isLast={i === dsr.entries.length - 1}
+                        />
+                    ))}
+                </CardContent>
+            </div>
+            <CardFooter className="flex flex-col gap-3 border-t p-5">
                 {dsr.sendTo.length > 0 && (
                     <div className="flex w-full items-center gap-2 text-sm text-muted-foreground">
                         <Mail className="size-4" />
@@ -153,7 +151,6 @@ export function ReceivedDsrDetail({ dsr }: ReceivedDsrDetailProps) {
                     </div>
                 </div>
             </CardFooter>
-
             <Sheet open={rejectOpen} onOpenChange={setRejectOpen}>
                 <SheetContent side="bottom">
                     <SheetHeader>

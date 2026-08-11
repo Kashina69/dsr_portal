@@ -55,7 +55,6 @@ export function DsrEntryRow({ entry, onUpdate, onSave, onEdit, onRemove }: DsrEn
                 <select
                     value={entry.projectName}
                     onChange={(e) => onUpdate("projectName", e.target.value)}
-                    onBlur={onSave}
                     className={cn(
                         "h-9 rounded-md border border-input bg-background px-3 text-sm",
                         "ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
@@ -71,28 +70,31 @@ export function DsrEntryRow({ entry, onUpdate, onSave, onEdit, onRemove }: DsrEn
                 <Input
                     value={entry.description}
                     onChange={(e) => onUpdate("description", e.target.value)}
-                    onBlur={onSave}
                     onKeyDown={(e) => {
                         if (e.key === "Enter") onSave();
                     }}
                     placeholder="What did you work on?"
                     className="h-9"
                 />
-                <Input
-                    type="time"
-                    value={entry.startTime}
-                    onChange={(e) => onUpdate("startTime", e.target.value)}
-                    className="h-9 w-28"
-                />
-                <Input
-                    type="time"
-                    value={entry.endTime}
-                    onChange={(e) => onUpdate("endTime", e.target.value)}
-                    className="h-9 w-28"
-                />
-                <Button size="sm" onClick={onSave}>
-                    Save
-                </Button>
+                <div className="flex justify-between items-center">
+                    <div className="flex gap-5">
+                        <Input
+                            type="time"
+                            value={entry.startTime}
+                            onChange={(e) => onUpdate("startTime", e.target.value)}
+                            className="h-9 w-28"
+                        />
+                        <div className="flex items-center">-</div>
+                        <Input
+                            type="time"
+                            value={entry.endTime}
+                            onChange={(e) => onUpdate("endTime", e.target.value)}
+                            className="h-9 w-28"
+                        />
+                    </div>
+
+                    <Button onClick={onSave}>Save</Button>
+                </div>
             </div>
         </div>
     );

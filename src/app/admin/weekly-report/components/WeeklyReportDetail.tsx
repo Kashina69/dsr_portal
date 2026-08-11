@@ -2,6 +2,7 @@ import { AlertCircle, Mail } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { EntryBlock } from "@/components/ui/EntryBlock";
 import { cn } from "@/lib/utils";
 
 import type { WeeklyReportStatus } from "../weekly-report.types";
@@ -70,13 +71,13 @@ export function WeeklyReportDetail({
                 <p className="mb-2 text-xs font-medium uppercase tracking-wider text-muted-foreground">
                     Entries
                 </p>
-                {entries.map((entry) => (
-                    <div key={entry.id} className="py-2">
-                        <span className="rounded-md bg-primary/10 px-1.5 py-0.5 text-xs font-medium text-primary">
-                            {entry.projectName}
-                        </span>
-                        <p className="mt-1.5 text-sm text-muted-foreground">{entry.description}</p>
-                    </div>
+                {entries.map((entry, i) => (
+                    <EntryBlock
+                        key={entry.id}
+                        entry={entry}
+                        isLast={i === entries.length - 1}
+                        showTimeSlot={false}
+                    />
                 ))}
             </CardContent>
             {(sendTo.length > 0 || ccTo.length > 0) && (

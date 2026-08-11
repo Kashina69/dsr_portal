@@ -18,7 +18,7 @@ export default function SentDsrPage() {
                     View and track your submitted daily status reports.
                 </p>
             </div>
-            <div className="flex h-[calc(100vh-14rem)] gap-4">
+            <div className="flex h-[calc(100vh-11rem)] gap-4">
                 <div className="w-80 shrink-0 overflow-hidden rounded-xl border bg-card">
                     <DsrListPanel
                         dsrs={mockSentDsrs}

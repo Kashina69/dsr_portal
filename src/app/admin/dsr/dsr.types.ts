@@ -1,9 +1,8 @@
-export type DsrStatus = "Pending" | "Approved" | "Rejected";
+import type { ReportEntry, ReportStatus, Submitter } from "@/types/report.type";
 
-export interface DsrEntry {
-    id: string;
-    projectName: string;
-    description: string;
+export type DsrStatus = ReportStatus;
+
+export interface DsrEntry extends ReportEntry {
     startTime: string;
     endTime: string;
     timeEstimate: string;
@@ -20,13 +19,7 @@ export interface Dsr {
     rejectionReason?: string;
 }
 
-export interface DsrSubmitter {
-    id: string;
-    name: string;
-    email: string;
-    avatar: string;
-    department: string;
-}
+export type DsrSubmitter = Submitter;
 
 export interface ReceivedDsr extends Dsr {
     submittedBy: DsrSubmitter;

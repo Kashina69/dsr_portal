@@ -2,8 +2,10 @@
 
 import { useCallback, useState } from "react";
 
+import { useToggleList } from "@/hooks/use-toggle-list.hook";
+
 import { today } from "../dsr.data";
-import type { DsrEntryDraft, DsrFormState } from "../dsr.types";
+import type { DsrEntryDraft } from "../dsr.types";
 
 function createEmptyEntry(): DsrEntryDraft {
     return {
@@ -29,30 +31,24 @@ function computeTimeEstimate(startTime: string, endTime: string): string {
 }
 
 export function useAddDsr() {
-    const [formState, setFormState] = useState<DsrFormState>({
-        date: today,
-        entries: [createEmptyEntry()],
-        sendTo: [],
-        ccTo: [],
-        attachments: [],
-    });
+    const [entries, setEntries] = useState<DsrEntryDraft[]>([createEmptyEntry()]);
+    const [attachments, setAttachments] = useState<File[]>([]);
+    const sendTo = useToggleList();
+    const ccTo = useToggleList();
 
     const updateEntry = useCallback((id: string, field: keyof DsrEntryDraft, value: string) => {
-        setFormState((prev) => ({
-            ...prev,
-            entries: prev.entries.map((entry) =>
-                entry.id === id ? { ...entry, [field]: value } : entry,
-            ),
-        }));
+        setEntries((prev) =>
+            prev.map((entry) => (entry.id === id ? { ...entry, [field]: value } : entry)),
+        );
     }, []);
 
     const saveEntry = useCallback((id: string) => {
-        setFormState((prev) => {
-            const idx = prev.entries.findIndex((e) => e.id === id);
+        setEntries((prev) => {
+            const idx = prev.findIndex((e) => e.id === id);
             if (idx === -1) return prev;
-            const entry = prev.entries[idx];
+            const entry = prev[idx];
             const timeEstimate = computeTimeEstimate(entry.startTime, entry.endTime);
-            const updated = prev.entries.map((e, i) =>
+            const updated = prev.map((e, i) =>
                 i === idx ? { ...e, saved: true, timeEstimate } : e,
             );
             const lastEntry = updated[updated.length - 1];
@@ -67,70 +63,56 @@ export function useAddDsr() {
                       },
                   ]
                 : [...updated, createEmptyEntry()];
-            return { ...prev, entries: nextEntries };
+            return nextEntries;
         });
     }, []);
 
     const editEntry = useCallback((id: string) => {
-        setFormState((prev) => ({
-            ...prev,
-            entries: prev.entries.map((entry) =>
-                entry.id === id ? { ...entry, saved: false } : entry,
-            ),
-        }));
+        setEntries((prev) =>
+            prev.map((entry) => (entry.id === id ? { ...entry, saved: false } : entry)),
+        );
     }, []);
 
     const removeEntry = useCallback((id: string) => {
-        setFormState((prev) => {
-            const filtered = prev.entries.filter((e) => e.id !== id);
-            return { ...prev, entries: filtered.length === 0 ? [createEmptyEntry()] : filtered };
+        setEntries((prev) => {
+            const filtered = prev.filter((e) => e.id !== id);
+            return filtered.length === 0 ? [createEmptyEntry()] : filtered;
         });
     }, []);
 
-    const toggleSendTo = useCallback((email: string) => {
-        setFormState((prev) => ({
-            ...prev,
-            sendTo: prev.sendTo.includes(email)
-                ? prev.sendTo.filter((e) => e !== email)
-                : [...prev.sendTo, email],
-        }));
-    }, []);
-
-    const toggleCcTo = useCallback((email: string) => {
-        setFormState((prev) => ({
-            ...prev,
-            ccTo: prev.ccTo.includes(email)
-                ? prev.ccTo.filter((e) => e !== email)
-                : [...prev.ccTo, email],
-        }));
-    }, []);
-
     const addAttachment = useCallback((file: File) => {
-        setFormState((prev) => ({
-            ...prev,
-            attachments: [...prev.attachments, file],
-        }));
+        setAttachments((prev) => [...prev, file]);
     }, []);
 
     const removeAttachment = useCallback((index: number) => {
-        setFormState((prev) => ({
-            ...prev,
-            attachments: prev.attachments.filter((_, i) => i !== index),
-        }));
+        setAttachments((prev) => prev.filter((_, i) => i !== index));
     }, []);
 
     const submitDsr = useCallback(() => {
+        const formState = {
+            date: today,
+            entries,
+            sendTo: sendTo.items,
+            ccTo: ccTo.items,
+            attachments,
+        };
         console.log("Submitting DSR:", formState);
-    }, [formState]);
+    }, [entries, sendTo.items, ccTo.items, attachments]);
 
     return {
-        formState,
+        formState: {
+            date: today,
+            entries,
+            sendTo: sendTo.items,
+            ccTo: ccTo.items,
+            attachments,
+        },
         updateEntry,
         saveEntry,
         editEntry,
         removeEntry,
-        toggleSendTo,
-        toggleCcTo,
+        toggleSendTo: sendTo.toggle,
+        toggleCcTo: ccTo.toggle,
         addAttachment,
         removeAttachment,
         submitDsr,

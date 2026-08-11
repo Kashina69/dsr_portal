@@ -1,10 +1,8 @@
-export type WeeklyReportStatus = "Pending" | "Approved" | "Rejected";
+import type { ReportEntry, ReportStatus, Submitter } from "@/types/report.type";
 
-export interface WeeklyReportEntry {
-    id: string;
-    projectName: string;
-    description: string;
-}
+export type WeeklyReportStatus = ReportStatus;
+
+export type WeeklyReportEntry = ReportEntry;
 
 export interface WeeklyReport {
     id: string;
@@ -18,17 +16,11 @@ export interface WeeklyReport {
     rejectionReason?: string;
 }
 
+export type ReportSubmitter = Submitter;
+
 export interface ReceivedWeeklyReport extends WeeklyReport {
     submittedBy: ReportSubmitter;
     sharedAt: string;
-}
-
-export interface ReportSubmitter {
-    id: string;
-    name: string;
-    email: string;
-    avatar: string;
-    department: string;
 }
 
 export interface ReportEntryDraft {

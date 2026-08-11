@@ -67,7 +67,7 @@ export default function ReceivedDsrPage() {
                 </p>
             </div>
             <ReceivedDsrStatusBar stats={stats} />
-            <div className="flex h-[calc(100vh-22rem)] gap-4">
+            <div className="flex h-[calc(100vh-17rem)] gap-4">
                 <div className="w-64 shrink-0 overflow-hidden rounded-xl border bg-card">
                     <ReceivedDsrList
                         submitters={submitters}
