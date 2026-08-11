@@ -24,7 +24,6 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <Sidebar collapsible="icon">
                 <SidebarContent>
                     <SidebarGroup>
-                        <SidebarGroupLabel>DSR Portal</SidebarGroupLabel>
                         <SidebarMenu>
                             {navItems.map((item) => (
                                 <SidebarMenuItem key={item.label}>

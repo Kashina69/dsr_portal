@@ -4,14 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
@@ -38,17 +31,13 @@ export function ForgotPasswordForm() {
         <div className="flex min-h-screen items-center justify-center px-4">
             <Card className="w-full max-w-md">
                 <CardHeader className="text-center">
-                    <div className="mx-auto mb-2 flex size-12 items-center justify-center rounded-full bg-primary text-xl font-bold text-primary-foreground">
+                    <div className="mx-auto flex size-12 items-center justify-center rounded-full bg-primary text-xl font-bold text-primary-foreground">
                         D
                     </div>
-                    <CardTitle className="text-2xl">Forgot your password?</CardTitle>
-                    <CardDescription>
-                        Enter your email address and we&apos;ll send you a reset link.
-                    </CardDescription>
                 </CardHeader>
                 <form onSubmit={handleSubmit}>
                     <CardContent>
-                        <div className="space-y-2">
+                        <div className=" my-4 space-y-2">
                             <Label htmlFor="email">Email</Label>
                             <Input
                                 id="email"
@@ -68,7 +57,7 @@ export function ForgotPasswordForm() {
                             Send reset link
                         </Button>
                         <Link
-                            href="/login"
+                            href="/auth/login"
                             className="text-sm text-primary underline-offset-4 hover:underline"
                         >
                             Back to login

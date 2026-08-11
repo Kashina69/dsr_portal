@@ -43,16 +43,12 @@ export function LoginForm() {
         <div className="flex min-h-screen items-center justify-center px-4">
             <Card className="w-full max-w-md">
                 <CardHeader className="text-center">
-                    <div className="mx-auto mb-2 flex size-12 items-center justify-center rounded-full bg-primary text-xl font-bold text-primary-foreground">
+                    <div className="mx-auto flex size-12 items-center justify-center rounded-full bg-primary text-xl font-bold text-primary-foreground">
                         D
                     </div>
-                    <CardTitle className="text-2xl">Login to your account</CardTitle>
-                    <CardDescription>
-                        Enter your email address and password to access the panel.
-                    </CardDescription>
                 </CardHeader>
                 <form onSubmit={handleSubmit}>
-                    <CardContent className="space-y-4">
+                    <CardContent className="my-4 space-y-4">
                         <div className="space-y-2">
                             <Label htmlFor="email">Email</Label>
                             <Input
@@ -88,7 +84,7 @@ export function LoginForm() {
                             Login
                         </Button>
                         <Link
-                            href="/forgot-password"
+                            href="/auth/forgot-password"
                             className="text-sm text-primary underline-offset-4 hover:underline"
                         >
                             Forgot password?

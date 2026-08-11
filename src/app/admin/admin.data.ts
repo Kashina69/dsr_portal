@@ -13,5 +13,3 @@ export const weeklyReportSubItems: NavItem[] = [
     { label: "Sent Report", href: "/admin/weekly-report/sent" },
     { label: "Received Report", href: "/admin/weekly-report/received" },
 ];
-
-export const placeholderItems: NavItem[] = [{ label: "Attendance Report", href: "#" }];

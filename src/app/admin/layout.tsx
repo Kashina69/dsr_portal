@@ -20,7 +20,7 @@ import {
 } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
 
-import { dsrSubItems, navItems, placeholderItems, weeklyReportSubItems } from "./admin.data";
+import { dsrSubItems, navItems, weeklyReportSubItems } from "./admin.data";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
@@ -101,16 +101,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                                     </SidebarMenuSub>
                                 )}
                             </SidebarMenuItem>
-                            {placeholderItems.map((item) => (
-                                <SidebarMenuItem key={item.label}>
-                                    <SidebarMenuButton
-                                        isActive={false}
-                                        render={<a href={item.href} />}
-                                    >
-                                        <span>{item.label}</span>
-                                    </SidebarMenuButton>
-                                </SidebarMenuItem>
-                            ))}
                         </SidebarMenu>
                     </SidebarGroup>
                 </SidebarContent>

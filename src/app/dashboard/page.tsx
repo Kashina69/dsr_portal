@@ -6,20 +6,11 @@ import { hoursByEmployee, hoursByProject } from "./dashboard.data";
 export default function DashboardPage() {
     return (
         <div className="space-y-5">
-            <div>
-                <h1 className="text-2xl font-semibold tracking-tight">DSR Listing</h1>
-                <p className="text-sm text-muted-foreground">
-                    Daily status reports across employees, projects, and tickets.
-                </p>
-            </div>
-
             <StatCards />
-
             <div className="grid gap-5 lg:grid-cols-2">
                 <HoursDonut title="Hours by Project" slices={hoursByProject} delay="delay-100" />
                 <HoursDonut title="Hours by Employee" slices={hoursByEmployee} delay="delay-150" />
             </div>
-
             <DsrExplorer />
         </div>
     );

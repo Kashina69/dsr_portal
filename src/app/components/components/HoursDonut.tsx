@@ -1,13 +1,30 @@
-/** Dummy data local to the DSR dashboard module. Extract to src/data/ only when shared across modules. */
+import { cn } from "@/lib/utils";
 
-import type {
-    DsrEntry,
-    DsrFilters,
-    DsrStats,
-    DsrStatus,
-    HoursSlice,
-    StatItem,
-} from "./dashboard.types";
+export interface HoursSlice {
+    label: string;
+    hours: number;
+    color: string;
+}
+
+interface HoursDonutProps {
+    title?: string;
+    slices?: HoursSlice[];
+    delay?: string;
+}
+
+export type DsrStatus = "Submitted" | "Pending";
+
+export interface DsrEntry {
+    id: string;
+    submittedBy: string;
+    avatar: string;
+    date: string;
+    project: string;
+    ticket: string;
+    description: string;
+    status: DsrStatus;
+    totalHours: number;
+}
 
 export const dsrEntries: DsrEntry[] = [
     {
@@ -342,64 +359,6 @@ export const dsrEntries: DsrEntry[] = [
     },
 ];
 
-export const dsrStats: DsrStats = {
-    totalEmployees: 30,
-    totalProjects: 20,
-    totalTickets: 40,
-    totalHours: 240,
-};
-
-export const emptyDsrFilters: DsrFilters = {
-    date: "all",
-    employee: "all",
-    project: "all",
-    ticket: "all",
-    status: "all",
-};
-
-export const dateOptions = [...new Set(dsrEntries.map((e) => e.date))].sort().reverse();
-export const employeeOptions = [...new Set(dsrEntries.map((e) => e.submittedBy))].sort();
-export const projectOptions = [...new Set(dsrEntries.map((e) => e.project))].sort();
-export const ticketOptions = [...new Set(dsrEntries.map((e) => e.ticket))].sort();
-export const statusOptions: DsrStatus[] = ["Submitted", "Pending"];
-
-export const statItems: StatItem[] = [
-    {
-        label: "Total Employees",
-        value: dsrStats.totalEmployees,
-        sub: "Submitting daily reports",
-        icon: "users",
-        color: "bg-indigo-500/10 text-indigo-600",
-        delay: "delay-0",
-    },
-    {
-        label: "Total Projects",
-        value: dsrStats.totalProjects,
-        sub: "Active this quarter",
-        icon: "folder",
-        color: "bg-sky-500/10 text-sky-600",
-        delay: "delay-75",
-    },
-    {
-        label: "Total Tickets",
-        value: dsrStats.totalTickets,
-        sub: "Tracked across projects",
-        icon: "ticket",
-        color: "bg-violet-500/10 text-violet-600",
-        delay: "delay-150",
-    },
-    {
-        label: "Total Hours",
-        value: dsrStats.totalHours,
-        sub: "Logged in this listing",
-        icon: "clock",
-        color: "bg-emerald-500/10 text-emerald-600",
-        delay: "delay-225",
-    },
-];
-
-const palette = ["#6366f1", "#0ea5e9", "#10b981", "#f59e0b", "#8b5cf6", "#f43f5e", "#94a3b8"];
-
 function aggregateHours(entries: DsrEntry[], key: "project" | "submittedBy") {
     const totals = new Map<string, number>();
     for (const entry of entries) {
@@ -409,22 +368,64 @@ function aggregateHours(entries: DsrEntry[], key: "project" | "submittedBy") {
         .map(([label, hours]) => ({ label, hours }))
         .sort((a, b) => b.hours - a.hours);
 }
+const palette = ["#6366f1", "#0ea5e9", "#10b981", "#f59e0b", "#8b5cf6", "#f43f5e", "#94a3b8"];
+
+export interface HoursSlice {
+    label: string;
+    hours: number;
+    color: string;
+}
 
 export const hoursByProject: HoursSlice[] = aggregateHours(dsrEntries, "project").map(
     (slice, i) => ({ ...slice, color: palette[i] }),
 );
 
-const employeeTotals = aggregateHours(dsrEntries, "submittedBy");
-const otherHours = employeeTotals.slice(5).reduce((sum, s) => sum + s.hours, 0);
+export function HoursDonut({
+    title = "Hours by Project",
+    slices = hoursByProject,
+    delay = "delay-100",
+}: HoursDonutProps) {
+    const total = slices.reduce((sum, slice) => sum + slice.hours, 0);
 
-export const hoursByEmployee: HoursSlice[] = [
-    ...employeeTotals.slice(0, 5).map((slice, i) => ({ ...slice, color: palette[i] })),
-    { label: "Others", hours: otherHours, color: palette[6] },
-];
+    const gradient = slices
+        .map((slice, i) => {
+            const start = slices.slice(0, i).reduce((sum, s) => sum + (s.hours / total) * 100, 0);
+            const end = start + (slice.hours / total) * 100;
+            return `${slice.color} ${start}% ${end}%`;
+        })
+        .join(", ");
 
-export const navItems = [{ label: "DSR Listing", href: "/dashboard", active: true }];
-
-export function formatDsrDate(iso: string): string {
-    const [year, month, day] = iso.split("-");
-    return `${month}/${day}/${year}`;
+    return (
+        <div className={cn("motion-safe:animate-fade-up rounded-xl border bg-card p-5", delay)}>
+            <h3 className="text-sm font-medium">{title}</h3>
+            <div className="mt-4 flex items-center gap-6">
+                <div
+                    className="motion-safe:animate-scale-in relative size-36 shrink-0 rounded-full"
+                    style={{ background: `conic-gradient(${gradient})` }}
+                >
+                    <div className="absolute inset-3 flex flex-col items-center justify-center rounded-full bg-card">
+                        <span className="text-xl font-semibold tabular-nums">{total}</span>
+                        <span className="text-xs text-muted-foreground">hours</span>
+                    </div>
+                </div>
+                <ul className="min-w-0 flex-1 space-y-1.5">
+                    {slices.map((slice) => (
+                        <li
+                            key={slice.label}
+                            className="flex items-center gap-2 rounded-md px-1 py-0.5 text-sm transition-colors hover:bg-muted/50"
+                        >
+                            <span
+                                className="size-2.5 shrink-0 rounded-sm"
+                                style={{ background: slice.color }}
+                            />
+                            <span className="min-w-0 flex-1 truncate">{slice.label}</span>
+                            <span className="text-xs text-muted-foreground tabular-nums">
+                                {slice.hours}h · {Math.round((slice.hours / total) * 100)}%
+                            </span>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </div>
+    );
 }
