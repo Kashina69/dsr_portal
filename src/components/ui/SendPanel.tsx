@@ -24,6 +24,7 @@ interface SendPanelProps {
     onSubmit: () => void;
     disabled?: boolean;
     footer?: ReactNode;
+    hideSubmit?: boolean;
 }
 
 export function SendPanel({
@@ -40,18 +41,18 @@ export function SendPanel({
     onSubmit,
     disabled = false,
     footer,
+    hideSubmit = false,
 }: SendPanelProps) {
     const fileRef = useRef<HTMLInputElement>(null);
 
     return (
         <>
             <CardContent className="space-y-4">
-                <Separator />
                 {attachments !== undefined && onAddAttachment && onRemoveAttachment && (
                     <div>
                         <p className="mb-2 text-sm font-medium">Attachments</p>
                         <div
-                            className="flex cursor-pointer items-center gap-2 rounded-lg border-2 border-dashed border-muted-foreground/25 p-4 transition-colors hover:border-primary/50"
+                            className="flex cursor-pointer flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed border-muted-foreground/25 p-8 transition-colors hover:border-primary/50"
                             onClick={() => fileRef.current?.click()}
                         >
                             <Upload className="size-4 text-muted-foreground" />
@@ -113,13 +114,15 @@ export function SendPanel({
                     showAvatar={!ccOptions}
                 />
             </CardContent>
-            <CardFooter className="justify-end gap-2">
-                {footer}
-                <Button onClick={onSubmit} disabled={disabled} className="gap-2">
-                    <Send className="size-4" />
-                    {submitLabel}
-                </Button>
-            </CardFooter>
+            {!hideSubmit && (
+                <CardFooter className="justify-end gap-2">
+                    {footer}
+                    <Button onClick={onSubmit} disabled={disabled} className="gap-2">
+                        <Send className="size-4" />
+                        {submitLabel}
+                    </Button>
+                </CardFooter>
+            )}
         </>
     );
 }
