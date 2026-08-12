@@ -18,39 +18,36 @@ const birthdays = [
 
 export function BirthdayCard() {
     return (
-        <Card className="bg-white rounded-lg shadow-sm border-0 mt-4 overflow-hidden mb-8">
+        <Card className="bg-card rounded-lg shadow-sm border mt-4 overflow-hidden mb-8">
             <div className="p-5 pb-4">
-                <h3 className="font-bold text-[#0f2142] text-sm">Upcoming Birthdays</h3>
+                <h3 className="font-bold text-foreground text-sm">Upcoming Birthdays</h3>
             </div>
 
             <div className="w-full overflow-x-auto">
                 <Table>
-                    <TableHeader className="bg-slate-100/50">
-                        <TableRow className="border-b-slate-100 hover:bg-transparent">
-                            <TableHead className="text-[10px] font-bold text-slate-500 uppercase h-8 py-1">
+                    <TableHeader className="bg-muted/50">
+                        <TableRow className="border-b hover:bg-transparent">
+                            <TableHead className="text-[10px] font-bold text-muted-foreground uppercase h-8 py-1">
                                 SR NO
                             </TableHead>
-                            <TableHead className="text-[10px] font-bold text-slate-500 uppercase h-8 py-1 w-2/3">
+                            <TableHead className="text-[10px] font-bold text-muted-foreground uppercase h-8 py-1 w-2/3">
                                 EMPLOYEE NAME
                             </TableHead>
-                            <TableHead className="text-[10px] font-bold text-slate-500 uppercase h-8 py-1">
+                            <TableHead className="text-[10px] font-bold text-muted-foreground uppercase h-8 py-1">
                                 DATE
                             </TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
                         {birthdays.map((birthday) => (
-                            <TableRow
-                                key={birthday.sr}
-                                className="border-b-slate-50 hover:bg-slate-50/50"
-                            >
-                                <TableCell className="text-xs text-slate-600 py-2">
+                            <TableRow key={birthday.sr} className="border-b hover:bg-muted/50">
+                                <TableCell className="text-xs text-muted-foreground py-2">
                                     {birthday.sr}
                                 </TableCell>
-                                <TableCell className="text-xs text-slate-600 py-2 whitespace-nowrap">
+                                <TableCell className="text-xs text-muted-foreground py-2 whitespace-nowrap">
                                     {birthday.name}
                                 </TableCell>
-                                <TableCell className="text-xs text-slate-600 py-2 whitespace-nowrap">
+                                <TableCell className="text-xs text-muted-foreground py-2 whitespace-nowrap">
                                     {birthday.date}
                                 </TableCell>
                             </TableRow>
