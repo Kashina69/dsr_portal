@@ -2,20 +2,32 @@ import { Clock3, FolderKanban, Ticket, Users } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-import { statItems } from "../dashboard.data";
-import type { StatIcon } from "../dashboard.types";
+export type StatCardIcon = "users" | "folder" | "ticket" | "clock";
 
-const icons: Record<StatIcon, typeof Users> = {
+export interface StatCardItem {
+    label: string;
+    value: number;
+    sub: string;
+    icon: StatCardIcon;
+    color: string;
+    delay: string;
+}
+
+interface StatCardsProps {
+    items: StatCardItem[];
+}
+
+const icons: Record<StatCardIcon, typeof Users> = {
     users: Users,
     folder: FolderKanban,
     ticket: Ticket,
     clock: Clock3,
 };
 
-export function StatCards() {
+export function StatCards({ items }: StatCardsProps) {
     return (
         <div className="grid grid-cols-2 gap-4 xl:grid-cols-4">
-            {statItems.map((item) => {
+            {items.map((item) => {
                 const Icon = icons[item.icon];
                 return (
                     <div

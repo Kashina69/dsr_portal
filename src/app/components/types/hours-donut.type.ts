@@ -1,0 +1,1 @@
+export type { HoursSlice } from "@/components/global/HoursDonut";

@@ -1,11 +1,4 @@
-export interface DemoRow {
-    id: string;
-    name: string;
-    email: string;
-    role: string;
-    status: "Active" | "Inactive";
-    hours: number;
-}
+import type { DemoRow } from "../types/demo.type";
 
 export const demoData: DemoRow[] = [
     { id: "1", name: "Sunil Kumar", email: "sunil@example.com", role: "Engineer", status: "Active", hours: 40 },

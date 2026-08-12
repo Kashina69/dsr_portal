@@ -1,6 +1,10 @@
 import { cn } from "@/lib/utils";
 
-import type { HoursSlice } from "../dashboard.types";
+export interface HoursSlice {
+    label: string;
+    hours: number;
+    color: string;
+}
 
 interface HoursDonutProps {
     title: string;

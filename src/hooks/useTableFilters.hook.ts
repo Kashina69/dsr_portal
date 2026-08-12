@@ -21,7 +21,7 @@ function matchesText(value: unknown, search: string): boolean {
  * If you use client-side filtering (the default), pass `data` and it returns
  * pre-sliced `rows`. For server-side, ignore `data` and manage rows yourself.
  */
-export function useTableFilters<T extends Record<string, unknown>>(
+export function useTableFilters<T>(
     options: UseTableFiltersOptions<T>,
 ) {
     const { data, initialRowsPerPage = 10 } = options;
@@ -33,7 +33,9 @@ export function useTableFilters<T extends Record<string, unknown>>(
     const filtered = useMemo(
         () =>
             data.filter((row) =>
-                Object.entries(applied).every(([key, search]) => matchesText(row[key], search)),
+                Object.entries(applied).every(
+                    ([key, search]) => matchesText((row as Record<string, unknown>)[key], search),
+                ),
             ),
         [data, applied],
     );

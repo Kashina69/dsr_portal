@@ -6,15 +6,15 @@ import type { ColumnDef } from "@/components/global/DataTable";
 import { DataTable } from "@/components/global/DataTable";
 import type { FilterField } from "@/components/global/FilterToolbar";
 import { FilterToolbar } from "@/components/global/FilterToolbar";
+import { HoursDonut } from "@/components/global/HoursDonut";
+import { StatCards } from "@/components/global/StatCards";
 import { TableExplorer } from "@/components/global/TableExplorer";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useTableFilters } from "@/hooks/useTableFilters.hook";
 
-import { HoursDonut } from "../dashboard/components/HoursDonut";
-import { StatCards } from "../dashboard/components/StatCards";
-import { hoursByEmployee, hoursByProject } from "../dashboard/dashboard.data";
-import { demoData, type DemoRow } from "./demo.data";
+import { demoData, demoHoursByEmployee, demoHoursByProject, demoStatCards } from "./data";
+import type { DemoRow } from "./types";
 
 const demoColumns: ColumnDef<DemoRow>[] = [
     { header: "Name", accessor: "name", render: (row) => <span className="text-sm font-medium">{row.name}</span> },
@@ -71,14 +71,14 @@ export default function Page() {
         <div className="space-y-8">
             <section>
                 <h2 className="mb-4 text-lg font-semibold">StatCards</h2>
-                <StatCards />
+                <StatCards items={demoStatCards} />
             </section>
 
             <section>
                 <h2 className="mb-4 text-lg font-semibold">HoursDonut</h2>
                 <div className="grid gap-5 lg:grid-cols-2">
-                    <HoursDonut title="Hours by Project" slices={hoursByProject} delay="delay-100" />
-                    <HoursDonut title="Hours by Employee" slices={hoursByEmployee} delay="delay-150" />
+                    <HoursDonut title="Hours by Project" slices={demoHoursByProject} delay="delay-100" />
+                    <HoursDonut title="Hours by Employee" slices={demoHoursByEmployee} delay="delay-150" />
                 </div>
             </section>
 

@@ -6,7 +6,7 @@ import type { FilterField} from "@/components/global/FilterToolbar";
 import { FilterToolbar } from "@/components/global/FilterToolbar";
 import { useTableFilters } from "@/hooks/useTableFilters.hook";
 
-interface TableExplorerProps<T extends Record<string, unknown> & { id: string }> {
+interface TableExplorerProps<T extends { id: string }> {
     data: T[];
     columns: ColumnDef<T>[];
     filterFields: FilterField[];
@@ -15,7 +15,7 @@ interface TableExplorerProps<T extends Record<string, unknown> & { id: string }>
     resultLabel?: string;
 }
 
-export function TableExplorer<T extends Record<string, unknown> & { id: string }>({
+export function TableExplorer<T extends { id: string }>({
     data,
     columns,
     filterFields,
