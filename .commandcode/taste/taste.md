@@ -22,7 +22,7 @@ See [global/taste.md](global/taste.md)
 - Uses the design skill to guide UI decisions whenever building visual interfaces. Confidence: 0.8
 - Prefers an incremental workflow: improve existing pages first before discussing or expanding to new features. Confidence: 0.8
 - Prefers technical explanations in short bullet points with clear cause → effect structure (issue → fix → files changed), to quickly understand changes in the project. Confidence: 0.8
-See [project-level/taste.md](project-level/taste.md)
+  See [project-level/taste.md](project-level/taste.md)
 
 # Good to have
 
