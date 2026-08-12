@@ -13,23 +13,43 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useTableFilters } from "@/hooks/useTableFilters.hook";
 
-import { demoData, demoHoursByEmployee, demoHoursByProject, demoStatCards } from "./data";
+import { demoData, demoHoursByProject, demoStatCards } from "./data";
 import type { DemoRow } from "./types";
 
 const demoColumns: ColumnDef<DemoRow>[] = [
-    { header: "Name", accessor: "name", render: (row) => <span className="text-sm font-medium">{row.name}</span> },
-    { header: "Email", accessor: "email", render: (row) => <span className="text-sm text-muted-foreground">{row.email}</span> },
+    {
+        header: "Name",
+        accessor: "name",
+        render: (row) => <span className="text-sm font-medium">{row.name}</span>,
+    },
+    {
+        header: "Email",
+        accessor: "email",
+        render: (row) => <span className="text-sm text-muted-foreground">{row.email}</span>,
+    },
     { header: "Role", accessor: "role" },
     {
         header: "Status",
         accessor: "status",
         render: (row) => (
-            <Badge variant="secondary" className={row.status === "Active" ? "bg-emerald-500/10 text-emerald-600" : "bg-amber-500/10 text-amber-600"}>
+            <Badge
+                variant="secondary"
+                className={
+                    row.status === "Active"
+                        ? "bg-emerald-500/10 text-emerald-600"
+                        : "bg-amber-500/10 text-amber-600"
+                }
+            >
                 {row.status}
             </Badge>
         ),
     },
-    { header: "Hours", accessor: "hours", className: "text-right", render: (row) => <span className="text-sm font-medium tabular-nums">{row.hours}</span> },
+    {
+        header: "Hours",
+        accessor: "hours",
+        className: "text-right",
+        render: (row) => <span className="text-sm font-medium tabular-nums">{row.hours}</span>,
+    },
     {
         header: "Actions",
         accessor: "id",
@@ -47,13 +67,17 @@ const demoFilterFields: FilterField[] = [
         id: "name",
         label: "Name",
         placeholder: "All names",
-        options: [...new Set(demoData.map((d) => d.name))].sort().map((n) => ({ value: n, label: n })),
+        options: [...new Set(demoData.map((d) => d.name))]
+            .sort()
+            .map((n) => ({ value: n, label: n })),
     },
     {
         id: "role",
         label: "Role",
         placeholder: "All roles",
-        options: [...new Set(demoData.map((d) => d.role))].sort().map((r) => ({ value: r, label: r })),
+        options: [...new Set(demoData.map((d) => d.role))]
+            .sort()
+            .map((r) => ({ value: r, label: r })),
     },
     {
         id: "status",
@@ -77,8 +101,11 @@ export default function Page() {
             <section>
                 <h2 className="mb-4 text-lg font-semibold">HoursDonut</h2>
                 <div className="grid gap-5 lg:grid-cols-2">
-                    <HoursDonut title="Hours by Project" slices={demoHoursByProject} delay="delay-100" />
-                    <HoursDonut title="Hours by Employee" slices={demoHoursByEmployee} delay="delay-150" />
+                    <HoursDonut
+                        title="Hours by Project"
+                        slices={demoHoursByProject}
+                        delay="delay-100"
+                    />
                 </div>
             </section>
 
