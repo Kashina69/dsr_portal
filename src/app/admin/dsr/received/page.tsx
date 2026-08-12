@@ -67,8 +67,8 @@ export default function ReceivedDsrPage() {
                 </p>
             </div>
             <ReceivedDsrStatusBar stats={stats} />
-            <div className="flex h-[calc(100vh-17rem)] gap-4">
-                <div className="w-64 shrink-0 overflow-hidden rounded-xl border bg-card">
+            <div className="grid grid-cols-4 h-[calc(100vh-17rem)] gap-4">
+                <div className="col-span-1 overflow-hidden rounded-xl border bg-card">
                     <ReceivedDsrList
                         submitters={submitters}
                         selectedId={selectedSubmitter?.id ?? null}
@@ -79,14 +79,14 @@ export default function ReceivedDsrPage() {
                         }}
                     />
                 </div>
-                <div className="w-80 shrink-0 overflow-hidden rounded-xl border bg-card">
+                <div className="col-span-1 overflow-hidden rounded-xl border bg-card">
                     <div className="flex h-full flex-col">
                         <div className="border-b px-4 py-3">
                             <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
                                 {selectedSubmitter ? `${selectedSubmitter.name}'s DSRs` : "DSRs"}
                             </p>
                         </div>
-                        <div className="flex-1 space-y-2 overflow-auto p-4">
+                        <div className="flex-1 space-y-2 overflow-auto p-4 custom-scrollbar">
                             {!selectedSubmitter ? (
                                 <div className="flex h-full items-center justify-center">
                                     <p className="text-sm text-muted-foreground">
@@ -141,7 +141,7 @@ export default function ReceivedDsrPage() {
                         </div>
                     </div>
                 </div>
-                <div className="flex-1 overflow-hidden rounded-xl border bg-card">
+                <div className="col-span-2 overflow-hidden rounded-xl border bg-card">
                     <ReceivedDsrDetail dsr={selectedDsr} />
                 </div>
             </div>

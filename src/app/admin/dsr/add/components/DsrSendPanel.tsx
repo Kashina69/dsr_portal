@@ -13,6 +13,7 @@ interface DsrSendPanelProps {
     onAddAttachment: (file: File) => void;
     onRemoveAttachment: (index: number) => void;
     onSubmit: () => void;
+    hideSubmit?: boolean;
 }
 
 export function DsrSendPanel({
@@ -24,6 +25,7 @@ export function DsrSendPanel({
     onAddAttachment,
     onRemoveAttachment,
     onSubmit,
+    hideSubmit,
 }: DsrSendPanelProps) {
     return (
         <SendPanel
@@ -38,6 +40,7 @@ export function DsrSendPanel({
             onRemoveAttachment={onRemoveAttachment}
             submitLabel="Submit DSR"
             onSubmit={onSubmit}
+            hideSubmit={hideSubmit}
         />
     );
 }
