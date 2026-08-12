@@ -14,14 +14,6 @@ export interface DsrEntry {
     totalHours: number;
 }
 
-export interface DsrFilters {
-    date: string;
-    employee: string;
-    project: string;
-    ticket: string;
-    status: DsrStatus | "all";
-}
-
 export interface HoursSlice {
     label: string;
     hours: number;

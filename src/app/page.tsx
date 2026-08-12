@@ -12,13 +12,13 @@ export default function Home() {
             </p>
             <div className="flex gap-3">
                 <Link
-                    href="/login"
+                    href="/auth/login"
                     className="inline-flex h-8 items-center justify-center gap-1.5 rounded-lg bg-primary px-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/80"
                 >
                     Login
                 </Link>
                 <Link
-                    href="/forgot-password"
+                    href="/auth/forgot-password"
                     className="inline-flex h-8 items-center justify-center gap-1.5 rounded-lg border border-input bg-background px-2.5 text-sm font-medium hover:bg-muted"
                 >
                     Forgot password

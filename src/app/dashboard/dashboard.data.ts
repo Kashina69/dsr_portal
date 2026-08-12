@@ -2,7 +2,6 @@
 
 import type {
     DsrEntry,
-    DsrFilters,
     DsrStats,
     DsrStatus,
     HoursSlice,
@@ -347,14 +346,6 @@ export const dsrStats: DsrStats = {
     totalProjects: 20,
     totalTickets: 40,
     totalHours: 240,
-};
-
-export const emptyDsrFilters: DsrFilters = {
-    date: "all",
-    employee: "all",
-    project: "all",
-    ticket: "all",
-    status: "all",
 };
 
 export const dateOptions = [...new Set(dsrEntries.map((e) => e.date))].sort().reverse();
