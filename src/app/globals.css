@@ -127,6 +127,38 @@
 
     html {
         @apply font-sans;
+        scrollbar-width: thin;
+        scrollbar-color: oklch(0.87 0 0) transparent;
+    }
+
+    ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 3px;
+        background: oklch(0.87 0 0);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: oklch(0.708 0 0);
+    }
+
+    .dark {
+        scrollbar-color: oklch(0.371 0 0) transparent;
+    }
+
+    .dark ::-webkit-scrollbar-thumb {
+        background: oklch(0.371 0 0);
+    }
+
+    .dark ::-webkit-scrollbar-thumb:hover {
+        background: oklch(0.556 0 0);
     }
 }
 
