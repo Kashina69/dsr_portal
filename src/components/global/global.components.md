@@ -13,11 +13,13 @@
 
 | Component      | Tags                   | Details Reference   |
 | -------------- | ---------------------- | ------------------- |
-| AppPagination  | pagination, navigation | [Details](#L26-L28) |
-| FilterDropdown | filter, select, dropdown | [Details](#L30-L32) |
-| FilterToolbar  | filter, toolbar, search | [Details](#L34-L37) |
-| DataTable      | table, pagination, data | [Details](#L39-L42) |
-| TableExplorer  | table, filter, explorer | [Details](#L44-L47) |
+| AppPagination  | pagination, navigation | [Details](#L30-L33) |
+| FilterDropdown | filter, select, dropdown | [Details](#L35-L38) |
+| FilterToolbar  | filter, toolbar, search | [Details](#L40-L43) |
+| DataTable      | table, pagination, data | [Details](#L45-L48) |
+| TableExplorer  | table, filter, explorer | [Details](#L50-L53) |
+| HoursDonut     | chart, donut, hours    | [Details](#L55-L58) |
+| StatCards      | stats, cards, metrics  | [Details](#L60-L63) |
 | EmptyState     | empty, placeholder, fallback | `src/components/ui/EmptyState.tsx` — cross-module empty state with icon + message |
 | EntryBlock     | dsr, entry, timeline      | `src/components/ui/EntryBlock.tsx` — timeline entry renderer with optional time slot |
 | StatusBar      | stats, status, grid        | `src/components/ui/StatusBar.tsx` — 4-stat grid for total/pending/approved/rejected |
@@ -42,19 +44,31 @@
 
 - **Path:** `src/components/global/FilterToolbar.tsx`
 - **Description:** Grid of FilterDropdowns + Apply/Reset buttons with internal draft state. Receives `fields`, `onApply`, `resultLabel`. Fully generic.
-- **Used by:** DsrExplorer, TableExplorer, components showcase.
+- **Used by:** TableExplorer, components showcase.
 
 ### DataTable
 
 - **Path:** `src/components/global/DataTable.tsx`
 - **Description:** Generic table with column-driven rendering (`ColumnDef<T>` with `render` callbacks), empty state, and pagination footer (rows-per-page selector, prev/next). `T extends { id: string }`.
-- **Used by:** DsrExplorer (via TableExplorer), components showcase.
+- **Used by:** TableExplorer, components showcase.
 
 ### TableExplorer
 
 - **Path:** `src/components/global/TableExplorer.tsx`
 - **Description:** All-in-one combo: FilterToolbar + DataTable wired with useTableFilters. Pass `data`, `columns`, `filterFields` and get a full filterable/paginated table. Zero domain coupling.
-- **Used by:** DsrExplorer, components showcase.
+- **Used by:** components showcase.
+
+### HoursDonut
+
+- **Path:** `src/components/global/HoursDonut.tsx`
+- **Description:** Conic-gradient donut chart with legend. Prop-driven: `title`, `slices: HoursSlice[]`, `delay`. Types live in the component file, re-exported via `app/components/types/`.
+- **Used by:** components showcase.
+
+### StatCards
+
+- **Path:** `src/components/global/StatCards.tsx`
+- **Description:** 4-stat card grid with icon, value, label, sub. Prop-driven: `items: StatCardItem[]`. Types live in the component file, re-exported via `app/components/types/`.
+- **Used by:** components showcase.
 
 ## Rules
 
