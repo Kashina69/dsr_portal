@@ -1,6 +1,6 @@
 "use client";
 
-import { type SubmitterInfo,SubmitterList } from "@/components/ui/SubmitterList";
+import { type SubmitterInfo, SubmitterList } from "@/components/ui/SubmitterList";
 
 import type { ReportSubmitter } from "../../weekly-report.types";
 

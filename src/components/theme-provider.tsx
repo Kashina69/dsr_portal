@@ -31,8 +31,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
                     -o-transition: none !important;
                     -ms-transition: none !important;
                     transition: none !important;
-                }`
-            )
+                }`,
+            ),
         );
         document.head.appendChild(css);
 
@@ -40,6 +40,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         localStorage.setItem(STORAGE_KEY, theme);
 
         // Force browser to recalculate styles without transitions
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         window.getComputedStyle(document.body).opacity;
 
         const timer = setTimeout(() => {
@@ -62,9 +63,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         [],
     );
 
-    return (
-        <ThemeContext value={{ theme, setTheme, toggleTheme }}>{children}</ThemeContext>
-    );
+    return <ThemeContext value={{ theme, setTheme, toggleTheme }}>{children}</ThemeContext>;
 }
 
 export function useTheme() {

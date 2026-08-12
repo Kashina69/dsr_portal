@@ -32,8 +32,7 @@ export function FilterToolbar({
     const [draft, setDraft] = useState<Record<string, string>>(defaults);
     const [applied, setApplied] = useState<Record<string, string>>(defaults);
 
-    const set = (id: string, value: string) =>
-        setDraft((current) => ({ ...current, [id]: value }));
+    const set = (id: string, value: string) => setDraft((current) => ({ ...current, [id]: value }));
 
     const apply = () => {
         setApplied(draft);

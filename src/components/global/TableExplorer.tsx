@@ -1,8 +1,8 @@
 "use client";
 
-import type { ColumnDef} from "@/components/global/DataTable";
+import type { ColumnDef } from "@/components/global/DataTable";
 import { DataTable } from "@/components/global/DataTable";
-import type { FilterField} from "@/components/global/FilterToolbar";
+import type { FilterField } from "@/components/global/FilterToolbar";
 import { FilterToolbar } from "@/components/global/FilterToolbar";
 import { useTableFilters } from "@/hooks/useTableFilters.hook";
 

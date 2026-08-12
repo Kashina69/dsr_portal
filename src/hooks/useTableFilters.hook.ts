@@ -12,7 +12,9 @@ interface UseTableFiltersOptions<T> {
  */
 function matchesText(value: unknown, search: string): boolean {
     if (search === "all" || search === "") return true;
-    return String(value ?? "").toLowerCase().includes(search.toLowerCase());
+    return String(value ?? "")
+        .toLowerCase()
+        .includes(search.toLowerCase());
 }
 
 /**
@@ -21,9 +23,7 @@ function matchesText(value: unknown, search: string): boolean {
  * If you use client-side filtering (the default), pass `data` and it returns
  * pre-sliced `rows`. For server-side, ignore `data` and manage rows yourself.
  */
-export function useTableFilters<T>(
-    options: UseTableFiltersOptions<T>,
-) {
+export function useTableFilters<T>(options: UseTableFiltersOptions<T>) {
     const { data, initialRowsPerPage = 10 } = options;
 
     const [applied, setApplied] = useState<Record<string, string>>({});
@@ -33,8 +33,8 @@ export function useTableFilters<T>(
     const filtered = useMemo(
         () =>
             data.filter((row) =>
-                Object.entries(applied).every(
-                    ([key, search]) => matchesText((row as Record<string, unknown>)[key], search),
+                Object.entries(applied).every(([key, search]) =>
+                    matchesText((row as Record<string, unknown>)[key], search),
                 ),
             ),
         [data, applied],
