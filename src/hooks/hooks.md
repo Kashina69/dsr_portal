@@ -10,9 +10,9 @@
 
 ## 1. Quick Index
 
-| Hook            | Tags                    | Details Reference   |
-| --------------- | ----------------------- | ------------------- |
-| useToggleList   | toggle, selection, list | [Details](#L21-L24) |
+| Hook            | Tags                      | Details Reference   |
+| --------------- | ------------------------- | ------------------- |
+| useToggleList   | toggle, selection, list   | [Details](#L21-L24) |
 | useTableFilters | table, filter, pagination | [Details](#L26-L30) |
 
 ## 2. Deep Dives

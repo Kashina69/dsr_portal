@@ -11,20 +11,20 @@
 
 ## 1. Quick Index
 
-| Component      | Tags                   | Details Reference   |
-| -------------- | ---------------------- | ------------------- |
-| AppPagination  | pagination, navigation | [Details](#L30-L33) |
-| FilterDropdown | filter, select, dropdown | [Details](#L35-L38) |
-| FilterToolbar  | filter, toolbar, search | [Details](#L40-L43) |
-| DataTable      | table, pagination, data | [Details](#L45-L48) |
-| TableExplorer  | table, filter, explorer | [Details](#L50-L53) |
-| HoursDonut     | chart, donut, hours    | [Details](#L55-L58) |
-| StatCards      | stats, cards, metrics  | [Details](#L60-L63) |
-| EmptyState     | empty, placeholder, fallback | `src/components/ui/EmptyState.tsx` — cross-module empty state with icon + message |
-| EntryBlock     | dsr, entry, timeline      | `src/components/ui/EntryBlock.tsx` — timeline entry renderer with optional time slot |
-| StatusBar      | stats, status, grid        | `src/components/ui/StatusBar.tsx` — 4-stat grid for total/pending/approved/rejected |
-| SubmitterList  | submitter, list, selection | `src/components/ui/SubmitterList.tsx` — submitter list with avatar, name, pending badge |
-| SendPanel      | send, recipients, form     | `src/components/ui/SendPanel.tsx` — send-to/cc chip selector + optional attachments |
+| Component      | Tags                         | Details Reference                                                                       |
+| -------------- | ---------------------------- | --------------------------------------------------------------------------------------- |
+| AppPagination  | pagination, navigation       | [Details](#L30-L33)                                                                     |
+| FilterDropdown | filter, select, dropdown     | [Details](#L35-L38)                                                                     |
+| FilterToolbar  | filter, toolbar, search      | [Details](#L40-L43)                                                                     |
+| DataTable      | table, pagination, data      | [Details](#L45-L48)                                                                     |
+| TableExplorer  | table, filter, explorer      | [Details](#L50-L53)                                                                     |
+| HoursDonut     | chart, donut, hours          | [Details](#L55-L58)                                                                     |
+| StatCards      | stats, cards, metrics        | [Details](#L60-L63)                                                                     |
+| EmptyState     | empty, placeholder, fallback | `src/components/ui/EmptyState.tsx` — cross-module empty state with icon + message       |
+| EntryBlock     | dsr, entry, timeline         | `src/components/ui/EntryBlock.tsx` — timeline entry renderer with optional time slot    |
+| StatusBar      | stats, status, grid          | `src/components/ui/StatusBar.tsx` — 4-stat grid for total/pending/approved/rejected     |
+| SubmitterList  | submitter, list, selection   | `src/components/ui/SubmitterList.tsx` — submitter list with avatar, name, pending badge |
+| SendPanel      | send, recipients, form       | `src/components/ui/SendPanel.tsx` — send-to/cc chip selector + optional attachments     |
 
 ## 2. Deep Dives
 
