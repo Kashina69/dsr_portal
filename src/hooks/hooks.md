@@ -10,9 +10,10 @@
 
 ## 1. Quick Index
 
-| Hook           | Tags                    | Details Reference   |
-| -------------- | ----------------------- | ------------------- |
-| useToggleList  | toggle, selection, list | [Details](#L23-L30) |
+| Hook            | Tags                    | Details Reference   |
+| --------------- | ----------------------- | ------------------- |
+| useToggleList   | toggle, selection, list | [Details](#L21-L24) |
+| useTableFilters | table, filter, pagination | [Details](#L26-L30) |
 
 ## 2. Deep Dives
 
@@ -21,6 +22,12 @@
 - **Path:** `src/hooks/use-toggle-list.hook.ts`
 - **Description:** Generic toggle list hook for managing selected string values. Returns `{ items, toggle }`.
 - **Used by:** Add DSR page, Add Weekly Report page
+
+### useTableFilters
+
+- **Path:** `src/hooks/useTableFilters.hook.ts`
+- **Description:** Generic client-side filtering + pagination. Filters by substring match on `Record<string, unknown>` keys. Returns `{ applied, applyFilters, rows, from, to, total, page, setPage, pageCount, rowsPerPage, changeRowsPerPage }`.
+- **Used by:** TableExplorer, components showcase DemoTable.
 
 ## Rules
 
