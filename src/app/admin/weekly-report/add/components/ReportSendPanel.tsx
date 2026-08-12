@@ -11,6 +11,7 @@ interface ReportSendPanelProps {
     onToggleCcTo: (email: string) => void;
     onSubmit: () => void;
     disabled: boolean;
+    hideSubmit?: boolean;
 }
 
 export function ReportSendPanel({
@@ -20,6 +21,7 @@ export function ReportSendPanel({
     onToggleCcTo,
     onSubmit,
     disabled,
+    hideSubmit,
 }: ReportSendPanelProps) {
     return (
         <SendPanel
@@ -31,6 +33,7 @@ export function ReportSendPanel({
             submitLabel="Submit Report"
             onSubmit={onSubmit}
             disabled={disabled}
+            hideSubmit={hideSubmit}
         />
     );
 }

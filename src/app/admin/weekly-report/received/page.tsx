@@ -60,8 +60,8 @@ export default function ReceivedReportPage() {
                 </p>
             </div>
             <StatusBar stats={stats} />
-            <div className="flex h-[calc(100vh-22rem)] gap-4">
-                <div className="w-64 shrink-0 overflow-hidden rounded-xl border bg-card">
+            <div className="grid grid-cols-4 h-[calc(100vh-22rem)] gap-4">
+                <div className="col-span-1 overflow-hidden rounded-xl border bg-card">
                     <ReceivedSubmitterList
                         submitters={submitters}
                         selectedId={selectedSubmitter?.id ?? null}
@@ -72,7 +72,7 @@ export default function ReceivedReportPage() {
                         }}
                     />
                 </div>
-                <div className="w-80 shrink-0 overflow-hidden rounded-xl border bg-card">
+                <div className="col-span-1 overflow-hidden rounded-xl border bg-card">
                     <ReceivedReportList
                         reports={paged}
                         selectedId={selectedReport?.id ?? null}
@@ -82,7 +82,7 @@ export default function ReceivedReportPage() {
                         onPageChange={setPage}
                     />
                 </div>
-                <div className="flex-1 overflow-hidden rounded-xl border bg-card">
+                <div className="col-span-2 overflow-hidden rounded-xl border bg-card">
                     <ReceivedReportDetail report={selectedReport} />
                 </div>
             </div>
