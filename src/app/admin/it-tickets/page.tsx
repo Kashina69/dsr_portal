@@ -22,7 +22,6 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
-import { StatusBadge } from "@/components/ui/StatusBadge"; // if available, or just a custom badge
 
 import { MOCK_IT_TICKETS } from "./it-tickets.data";
 import type { ITTicket } from "./it-tickets.types";
@@ -50,7 +49,7 @@ const COLUMNS = [
     {
         header: "ACTION",
         accessor: "id" as keyof ITTicket,
-        render: (item: ITTicket) => (
+        render: () => (
             <Button size="icon-xs" variant="secondary" className="h-6 w-6">
                 <Eye className="size-3" />
             </Button>
@@ -59,8 +58,7 @@ const COLUMNS = [
 ];
 
 export default function ITTicketsPage() {
-    const [tickets, setTickets] = useState<ITTicket[]>(MOCK_IT_TICKETS);
-    const [dateRange, setDateRange] = useState("");
+    const [tickets] = useState<ITTicket[]>(MOCK_IT_TICKETS);
     const [category, setCategory] = useState("Select Category");
     const [severity, setSeverity] = useState("Select severity");
     const [status, setStatus] = useState("Select Status");
@@ -105,7 +103,7 @@ export default function ITTicketsPage() {
 
                 <div className="flex flex-col items-center justify-end gap-3 border-b p-4 sm:flex-row">
                     <div className="w-full sm:w-[250px]">
-                        <Select onValueChange={(val) => setDateRange(val as string)}>
+                        <Select onValueChange={() => {}}>
                             <SelectTrigger className="w-full">
                                 <SelectValue placeholder="14/08/2026 - 14/08/2026" />
                             </SelectTrigger>

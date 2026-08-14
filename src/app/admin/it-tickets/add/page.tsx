@@ -1,7 +1,6 @@
 "use client";
 
-import { Home, Upload, X } from "lucide-react";
-import Link from "next/link";
+import { Home, X } from "lucide-react";
 import { useRef, useState } from "react";
 
 import {

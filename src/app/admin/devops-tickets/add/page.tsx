@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import {
     Select,
     SelectContent,
@@ -21,11 +22,13 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 
-import { HARMONY_TICKET_CATEGORIES } from "../harmony-tickets.types";
+import { DEVOPS_TICKET_PROJECTS, DEVOPS_TICKET_SEVERITIES } from "../devops-tickets.types";
 
-export default function AddHarmonyTicketPage() {
+export default function AddDevopsTicketPage() {
+    const [project, setProject] = useState("");
+    const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    const [category, setCategory] = useState("");
+    const [severity, setSeverity] = useState("");
     const [files, setFiles] = useState<File[]>([]);
     const fileRef = useRef<HTMLInputElement>(null);
 
@@ -43,19 +46,21 @@ export default function AddHarmonyTicketPage() {
     };
 
     const handleSubmit = () => {
-        // Mock submission
-        if (!description || !category) {
+        if (!project || !title || !description) {
             alert("Please fill in required fields.");
             return;
         }
-        alert("Ticket submitted successfully!");
+        alert("Devops Ticket submitted successfully!");
+        setProject("");
+        setTitle("");
         setDescription("");
-        setCategory("");
+        setSeverity("");
         setFiles([]);
     };
 
-    // Filter out "All" from categories for the add form
-    const addCategories = HARMONY_TICKET_CATEGORIES.filter((c) => c !== "All");
+    // Filter out "Select Project" and "All"
+    const addProjects = DEVOPS_TICKET_PROJECTS.filter((p) => p !== "Select Project");
+    const addSeverities = DEVOPS_TICKET_SEVERITIES.filter((s) => s !== "All");
 
     return (
         <div className="flex flex-col gap-4 p-4 sm:p-6 lg:p-8">
@@ -68,26 +73,55 @@ export default function AddHarmonyTicketPage() {
                     </BreadcrumbItem>
                     <BreadcrumbSeparator />
                     <BreadcrumbItem>
-                        <BreadcrumbLink href="/admin/harmony-tickets">
-                            Harmony Tickets
-                        </BreadcrumbLink>
+                        <BreadcrumbLink href="/admin/devops-tickets">Devops Tickets</BreadcrumbLink>
                     </BreadcrumbItem>
                     <BreadcrumbSeparator />
                     <BreadcrumbItem>
-                        <BreadcrumbPage>Add Harmony Ticket</BreadcrumbPage>
+                        <BreadcrumbPage>Add Devops Ticket</BreadcrumbPage>
                     </BreadcrumbItem>
                 </BreadcrumbList>
             </Breadcrumb>
 
             <Card className="flex flex-col">
                 <div className="border-b p-4">
-                    <h2 className="text-lg font-semibold">Add Harmony Ticket</h2>
+                    <h2 className="text-lg font-semibold">Add Devops Ticket</h2>
                 </div>
 
                 <CardContent className="flex flex-col gap-6 p-6">
                     <div className="flex flex-col gap-2">
                         <label className="text-sm font-medium">
-                            Enter Description<span className="text-destructive">*</span>
+                            Please select a project<span className="text-destructive">*</span>
+                        </label>
+                        <Select value={project} onValueChange={(val) => setProject(val || "")}>
+                            <SelectTrigger className="w-full">
+                                <SelectValue placeholder="Select Project" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                {addProjects.map((proj) => (
+                                    <SelectItem key={proj} value={proj}>
+                                        {proj}
+                                    </SelectItem>
+                                ))}
+                            </SelectContent>
+                        </Select>
+                    </div>
+
+                    <div className="flex flex-col gap-2">
+                        <label className="text-sm font-medium">
+                            Title<span className="text-destructive">*</span>
+                        </label>
+                        <Input
+                            placeholder="Enter Title"
+                            value={title}
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                                setTitle(e.target.value)
+                            }
+                        />
+                    </div>
+
+                    <div className="flex flex-col gap-2">
+                        <label className="text-sm font-medium">
+                            Enter description<span className="text-destructive">*</span>
                         </label>
                         <textarea
                             placeholder="Enter Description"
@@ -100,17 +134,15 @@ export default function AddHarmonyTicketPage() {
                     </div>
 
                     <div className="flex flex-col gap-2">
-                        <label className="text-sm font-medium">
-                            Please select a category <span className="text-destructive">*</span>
-                        </label>
-                        <Select value={category} onValueChange={(val) => setCategory(val || "")}>
+                        <label className="text-sm font-medium">Please select severity level</label>
+                        <Select value={severity} onValueChange={(val) => setSeverity(val || "")}>
                             <SelectTrigger className="w-full">
-                                <SelectValue placeholder="Select Category" />
+                                <SelectValue placeholder="Medium" />
                             </SelectTrigger>
                             <SelectContent>
-                                {addCategories.map((cat) => (
-                                    <SelectItem key={cat} value={cat}>
-                                        {cat}
+                                {addSeverities.map((sev) => (
+                                    <SelectItem key={sev} value={sev}>
+                                        {sev}
                                     </SelectItem>
                                 ))}
                             </SelectContent>
@@ -119,9 +151,12 @@ export default function AddHarmonyTicketPage() {
 
                     <div className="flex flex-col gap-2">
                         <label className="text-sm font-medium">
-                            Please upload ticket attachment
+                            Please upload ticket attachment{" "}
+                            <span className="font-normal italic text-muted-foreground">
+                                Only images, Word, and PDF files are allowed.
+                            </span>
                             <br />
-                            <span className="text-xs italic text-muted-foreground">
+                            <span className="font-normal italic text-muted-foreground">
                                 (Maximum files : 10)
                             </span>
                         </label>

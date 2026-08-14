@@ -15,7 +15,6 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import {
     Select,
     SelectContent,
@@ -37,8 +36,7 @@ const COLUMNS = [
 ];
 
 export default function HarmonyTicketsPage() {
-    const [tickets, setTickets] = useState<HarmonyTicket[]>(MOCK_HARMONY_TICKETS);
-    const [dateRange, setDateRange] = useState("");
+    const [tickets] = useState<HarmonyTicket[]>(MOCK_HARMONY_TICKETS);
     const [category, setCategory] = useState("Select Category");
     const [status, setStatus] = useState("Select Status");
     const [page, setPage] = useState(1);
@@ -80,7 +78,7 @@ export default function HarmonyTicketsPage() {
 
                 <div className="flex flex-col items-center justify-end gap-3 border-b p-4 sm:flex-row">
                     <div className="w-full sm:w-[250px]">
-                        <Select onValueChange={(val) => setDateRange(val as string)}>
+                        <Select onValueChange={() => {}}>
                             <SelectTrigger className="w-full">
                                 <SelectValue placeholder="14/08/2026 - 14/08/2026" />
                             </SelectTrigger>
