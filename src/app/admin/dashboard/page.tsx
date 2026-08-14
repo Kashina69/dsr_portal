@@ -1,9 +1,10 @@
 import { FileText, Home, PieChart, ThumbsUp } from "lucide-react";
 
-import { AnniversaryCard } from "@/components/dashboard/anniversary-card";
-import { BirthdayCard } from "@/components/dashboard/birthday-card";
-import { QuoteCard } from "@/components/dashboard/quote-card";
-import { StatCard } from "@/components/dashboard/stat-card";
+import { AnniversaryCard } from "@/app/admin/dashboard/components/anniversary-card";
+import { BirthdayCard } from "@/app/admin/dashboard/components/birthday-card";
+import { QuoteCard } from "@/app/admin/dashboard/components/quote-card";
+import { StatCard } from "@/components/global/stat-card";
+import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
 export default function DashboardPage() {
@@ -11,10 +12,28 @@ export default function DashboardPage() {
         <>
             <div className="flex-1 max-w-7xl w-full mx-auto z-10 relative">
                 {/* Breadcrumbs */}
-                <div className="bg-card border rounded-full px-3 py-1.5 inline-flex items-center gap-1.5 shadow-sm mb-5">
-                    <Home className="h-3.5 w-3.5 text-slate-400" />
-                    <span className="text-slate-300 mx-0.5">/</span>
-                    <span className="text-xs font-medium text-slate-500">Dashboard</span>
+                <div className="flex justify-between items-center mb-3">
+                    <div className="bg-card border rounded-full px-3 py-1.5 inline-flex items-center gap-1.5 shadow-sm mb-5 h-min">
+                        <Home className="h-3.5 w-3.5 text-slate-400" />
+                        <span className="text-slate-300 mx-0.5">/</span>
+                        <span className="text-xs font-medium text-slate-500">Dashboard</span>
+                    </div>
+                    {/* Time tracking floating card */}
+                    <div className="">
+                        <Card className="bg-background rounded-lg p-3 w-[180px] shadow-md flex flex-col items-center gap-2">
+                            <div className="text-center w-full">
+                                <h3 className="font-bold text-foreground text-sm">
+                                    Time in at 9:32 am
+                                </h3>
+                                <p className="text-xs text-muted-foreground mt-0.5">
+                                    Timing: 04:07:06
+                                </p>
+                            </div>
+                            <Button className="w-full text-xs h-7 rounded-md font-medium">
+                                Time Out
+                            </Button>
+                        </Card>
+                    </div>
                 </div>
 
                 {/* Stat Cards Row */}

@@ -1,6 +1,6 @@
 import { PieChart } from "lucide-react";
 
-import { StatCard } from "@/components/dashboard/stat-card";
+import { StatCard } from "@/components/global/stat-card";
 
 import { LeaveRequestForm } from "../components/LeaveRequestForm";
 
