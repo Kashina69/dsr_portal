@@ -179,13 +179,13 @@ export default function DevopsTicketsPage() {
                     <Button
                         size="icon"
                         variant="destructive"
-                        className="shrink-0 bg-red-500 hover:bg-red-600"
+                        className="shrink-0"
                         onClick={clearFilters}
                     >
                         <X className="size-4" />
                     </Button>
                     <Link href="/admin/devops-tickets/add">
-                        <Button size="icon" className="shrink-0 bg-[#00b5c5] hover:bg-[#009cae]">
+                        <Button size="icon" className="shrink-0  hover:bg-[#009cae]">
                             <Plus className="size-4" />
                         </Button>
                     </Link>

@@ -125,7 +125,7 @@ export default function HarmonyTicketsPage() {
                         </Select>
                     </div>
                     <Link href="/admin/harmony-tickets/add">
-                        <Button size="icon" className="shrink-0 bg-[#00b5c5] hover:bg-[#009cae]">
+                        <Button size="icon" className="shrink-0  hover:bg-[#009cae]">
                             <Plus className="size-4" />
                         </Button>
                     </Link>

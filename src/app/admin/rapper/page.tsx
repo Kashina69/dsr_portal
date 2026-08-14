@@ -68,10 +68,7 @@ export default function RapperPage() {
 
                 <div className="flex justify-end p-4">
                     <Link href="/admin/rapper/add">
-                        <Button
-                            size="icon"
-                            className="h-8 w-8 shrink-0 bg-[#00b5c5] hover:bg-[#009cae]"
-                        >
+                        <Button size="icon" className="h-8 w-8 shrink-0  hover:bg-[#009cae]">
                             <Plus className="h-4 w-4" />
                         </Button>
                     </Link>
@@ -94,11 +91,6 @@ export default function RapperPage() {
                     />
                 </CardContent>
             </Card>
-
-            {/* Footer matching screenshot */}
-            <div className="mt-8 text-sm text-muted-foreground">
-                © 2026 <span className="font-medium text-blue-600">Talentelgia Technologies</span>
-            </div>
         </div>
     );
 }

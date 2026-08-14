@@ -159,10 +159,7 @@ export default function AddHarmonyTicketPage() {
                     </div>
 
                     <div>
-                        <Button
-                            className="bg-[#00b5c5] px-8 hover:bg-[#009cae]"
-                            onClick={handleSubmit}
-                        >
+                        <Button className=" px-8 hover:bg-[#009cae]" onClick={handleSubmit}>
                             Submit
                         </Button>
                     </div>

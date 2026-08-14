@@ -195,7 +195,7 @@ export function CreateTaskModal({ open, onOpenChange }: CreateTaskModalProps) {
                     <Button variant="outline" onClick={() => onOpenChange(false)}>
                         Close
                     </Button>
-                    <Button className="bg-[#00b5c5] hover:bg-[#009cae]" onClick={handleSave}>
+                    <Button className=" hover:bg-[#009cae]" onClick={handleSave}>
                         Save Task
                     </Button>
                 </div>

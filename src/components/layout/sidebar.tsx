@@ -75,9 +75,6 @@ const navigation: NavItem[] = [
     { name: "Devops Tickets", href: "/admin/devops-tickets", icon: ServerCog },
     { name: "Rapper", href: "/admin/rapper", icon: Music },
     { name: "Tasks Mangement", href: "/admin/tasks-management", icon: ListTodo },
-    { name: "DMS", href: "/admin/dms", icon: FolderTree },
-    { name: "IPM", href: "/admin/ipm", icon: Network },
-    { name: "Cheer Points", href: "/admin/cheer-points", icon: Star },
 ];
 
 function SidebarItem({ item, pathname }: { item: NavItem; pathname: string }) {

@@ -198,19 +198,12 @@ export default function AddRapperPage() {
                     </div>
 
                     <div className="mt-4">
-                        <Button
-                            className="bg-[#00b5c5] hover:bg-[#009cae] px-8"
-                            onClick={handleSubmit}
-                        >
+                        <Button className=" hover:bg-[#009cae] px-8" onClick={handleSubmit}>
                             Submit
                         </Button>
                     </div>
                 </CardContent>
             </Card>
-
-            <div className="mt-4 text-sm text-muted-foreground">
-                © 2026 <span className="font-medium text-blue-600">Talentelgia Technologies</span>
-            </div>
         </div>
     );
 }

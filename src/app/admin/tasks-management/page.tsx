@@ -70,9 +70,7 @@ const CustomToolbar = (toolbar: ToolbarProps<TaskEvent>) => {
                     <button
                         onClick={() => toolbar.onView(Views.MONTH)}
                         className={`px-4 py-1.5 text-sm font-medium transition-colors ${
-                            isMonth
-                                ? "bg-[#00b5c5] text-primary-foreground"
-                                : "bg-background hover:bg-muted"
+                            isMonth ? " text-primary-foreground" : "bg-background hover:bg-muted"
                         }`}
                     >
                         Month
@@ -80,9 +78,7 @@ const CustomToolbar = (toolbar: ToolbarProps<TaskEvent>) => {
                     <button
                         onClick={() => toolbar.onView(Views.WEEK)}
                         className={`border-l px-4 py-1.5 text-sm font-medium transition-colors ${
-                            isWeek
-                                ? "bg-[#00b5c5] text-primary-foreground"
-                                : "bg-background hover:bg-muted"
+                            isWeek ? " text-primary-foreground" : "bg-background hover:bg-muted"
                         }`}
                     >
                         Week
@@ -90,9 +86,7 @@ const CustomToolbar = (toolbar: ToolbarProps<TaskEvent>) => {
                     <button
                         onClick={() => toolbar.onView(Views.AGENDA)}
                         className={`border-l px-4 py-1.5 text-sm font-medium transition-colors ${
-                            isAgenda
-                                ? "bg-[#00b5c5] text-primary-foreground"
-                                : "bg-background hover:bg-muted"
+                            isAgenda ? " text-primary-foreground" : "bg-background hover:bg-muted"
                         }`}
                     >
                         List
