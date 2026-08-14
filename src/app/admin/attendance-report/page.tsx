@@ -15,78 +15,7 @@ import {
 } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
 
-const attendanceData = [
-    {
-        date: "12-08-2026",
-        timeIn: "12-08-2026 9:32 AM",
-        timeOut: "-",
-        workingHours: "-",
-        status: "Working",
-    },
-    {
-        date: "11-08-2026",
-        timeIn: "11-08-2026 9:24 AM",
-        timeOut: "-",
-        workingHours: "-",
-        status: "Absent",
-    },
-    {
-        date: "10-08-2026",
-        timeIn: "10-08-2026 9:38 AM",
-        timeOut: "10-08-2026 7:08 PM",
-        workingHours: "09:29:14",
-        status: "Present",
-    },
-    {
-        date: "07-08-2026",
-        timeIn: "07-08-2026 9:41 AM",
-        timeOut: "-",
-        workingHours: "-",
-        status: "Absent",
-    },
-    {
-        date: "06-08-2026",
-        timeIn: "06-08-2026 9:42 AM",
-        timeOut: "06-08-2026 7:04 PM",
-        workingHours: "09:22:07",
-        status: "Present",
-    },
-    {
-        date: "05-08-2026",
-        timeIn: "05-08-2026 9:42 AM",
-        timeOut: "05-08-2026 7:35 PM",
-        workingHours: "09:52:53",
-        status: "Present",
-    },
-    {
-        date: "04-08-2026",
-        timeIn: "04-08-2026 10:33 AM",
-        timeOut: "04-08-2026 7:07 PM",
-        workingHours: "08:33:30",
-        status: "Present",
-    },
-    {
-        date: "03-08-2026",
-        timeIn: "03-08-2026 9:33 AM",
-        timeOut: "03-08-2026 6:46 PM",
-        workingHours: "09:13:15",
-        status: "Present",
-    },
-    {
-        date: "30-07-2026",
-        timeIn: "30-07-2026 9:46 AM",
-        timeOut: "30-07-2026 7:55 PM",
-        workingHours: "10:08:30",
-        status: "Present",
-    },
-    {
-        date: "29-07-2026",
-        timeIn: "29-07-2026 9:34 AM",
-        timeOut: "29-07-2026 6:41 PM",
-        workingHours: "09:07:29",
-        status: "Present",
-    },
-];
+import { attendanceData } from "./attendance-report.data";
 
 export default function AttendanceReportPage() {
     return (

@@ -16,31 +16,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
-import { MOCK_RAPPER_RECORDS } from "./rapper.data";
+import { columns, MOCK_RAPPER_RECORDS } from "./rapper.data";
 import type { RapperRecord } from "./rapper.types";
-
-const columns = [
-    {
-        header: "RAPPER NAME",
-        accessor: "name" as keyof RapperRecord,
-    },
-    {
-        header: "RAPPER EMAIL",
-        accessor: "email" as keyof RapperRecord,
-    },
-    {
-        header: "DEPARTMENT",
-        accessor: "department" as keyof RapperRecord,
-    },
-    {
-        header: "RAPPER DATE",
-        accessor: "date" as keyof RapperRecord,
-    },
-    {
-        header: "INTERVIEW STATUS",
-        accessor: "interviewStatus" as keyof RapperRecord,
-    },
-];
 
 export default function RapperPage() {
     const [records] = useState<RapperRecord[]>(MOCK_RAPPER_RECORDS);

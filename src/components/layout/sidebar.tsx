@@ -1,81 +1,14 @@
 "use client";
 
-import {
-    CalendarDays,
-    ChevronRight,
-    ClipboardList,
-    Database,
-    FileText,
-    FolderTree,
-    LayoutDashboard,
-    ListTodo,
-    MonitorSmartphone,
-    Music,
-    Network,
-    Plus,
-    Send,
-    ServerCog,
-    Star,
-    Ticket,
-    Umbrella,
-} from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 import { cn } from "@/lib/utils";
 
-type SubItem = { name: string; href: string; icon?: React.ElementType };
-type NavItem = {
-    name: string;
-    href: string;
-    icon: React.ElementType;
-    expandable?: boolean;
-    subItems?: SubItem[];
-};
-
-const navigation: NavItem[] = [
-    { name: "Dashboard", href: "/admin/dashboard", icon: LayoutDashboard },
-    { name: "Attendance Report", href: "/admin/attendance-report", icon: ClipboardList },
-    {
-        name: "DSR",
-        href: "/admin/dsr",
-        icon: FileText,
-        expandable: true,
-        subItems: [
-            { name: "Add DSR", href: "/admin/dsr/add", icon: Plus },
-            { name: "Sent DSR", href: "/admin/dsr/sent", icon: Send },
-            { name: "Received DSR", href: "/admin/dsr/received", icon: Database },
-        ],
-    },
-    {
-        name: "Weekly Report",
-        href: "/admin/weekly-report",
-        icon: CalendarDays,
-        expandable: true,
-        subItems: [
-            { name: "Add Report", href: "/admin/weekly-report/add", icon: Plus },
-            { name: "Sent Report", href: "/admin/weekly-report/sent", icon: Send },
-            { name: "Received Report", href: "/admin/weekly-report/received", icon: Database },
-        ],
-    },
-    {
-        name: "Manage Leaves",
-        href: "/admin/manage-leaves",
-        icon: Umbrella,
-        expandable: true,
-        subItems: [
-            { name: "Apply Leave", href: "/admin/manage-leaves/apply", icon: Plus },
-            { name: "Apply WFH Request", href: "/admin/manage-leaves/apply-wfh", icon: Plus },
-            { name: "My Leave Request", href: "/admin/manage-leaves/my-requests", icon: ListTodo },
-        ],
-    },
-    { name: "Harmony Tickets", href: "/admin/harmony-tickets", icon: Ticket },
-    { name: "IT Tickets", href: "/admin/it-tickets", icon: MonitorSmartphone },
-    { name: "Devops Tickets", href: "/admin/devops-tickets", icon: ServerCog },
-    { name: "Rapper", href: "/admin/rapper", icon: Music },
-    { name: "Tasks Mangement", href: "/admin/tasks-management", icon: ListTodo },
-];
+import { navigation } from "./sidebar.data";
+import type { NavItem } from "./sidebar.type";
 
 function SidebarItem({ item, pathname }: { item: NavItem; pathname: string }) {
     const isSubActive = item.subItems?.some((sub) => pathname.startsWith(sub.href)) ?? false;
